@@ -69,6 +69,23 @@ Allows to stop the computatation if a change of some Global is small for a longe
 | `Unknown=` | Limit on change of a specific Global | Value with unit (NULL) |
 | `Times=` | Numer of times the change have to be below the limit to stop the computation. | Value with unit (NULL) |
 
+##  PID 
+
+```xml
+<PID Flux="10.0" control="ForceX" scale="0.01" DerivativeTime="100" IntegrationTime="10000" Iterations="10"/>
+```
+
+PID controller. Allows to achive a specified value of an Global, with tweaking of a Setting 
+
+| Attribute | Comment | Value |
+| --- | --- | --- |
+| `Iterations=` |  | Value with unit (int) |
+| `Unknown=` | Target value for a specified Global | Value with unit (NULL) |
+| `control=` | The setting to control (currently only zonal settings are supported) | Value with unit (NULL) |
+| `scale=` | The proportional rate D in PID controller | Value with unit (NULL) |
+| `DerivativeTime=` | The derivative time scale. D = P * DerivativeTime | Value with unit (NULL) |
+| `IntegrationTime=` | The integral time scale. I = P / IntegrationTime | Value with unit (NULL) |
+
 ##  Sample 
 
 ```xml

@@ -5,8 +5,8 @@ The `d2q9` model is a basic 2D Lattice Boltzmann Method model for flow simulatio
 
 ## Details
 [Model description files](Model description) files for this model:
-[Dynamics.c](https://github.com/llaniewski/TCLB/blob/(HEAD detached at c598d42)/src/d2q9/Dynamics.c.Rt)
-[Dynamics.R](https://github.com/llaniewski/TCLB/blob/(HEAD detached at c598d42)/src/d2q9/Dynamics.R)
+[Dynamics.c](https://github.com/llaniewski/TCLB/blob/(HEAD detached at c598d42)/src/d2q9_autosym/Dynamics.c.Rt)
+[Dynamics.R](https://github.com/llaniewski/TCLB/blob/(HEAD detached at c598d42)/src/d2q9_autosym/Dynamics.R)
 
 ### [Zonal Settings](Settings)
 
@@ -59,6 +59,8 @@ The `d2q9` model is a basic 2D Lattice Boltzmann Method model for flow simulatio
 |NONE|None|
 |OBJECTIVE|Inlet, Outlet|
 |SETTINGZONE|DefaultZone|
+|SYMX|SymmetryX_plus, SymmetryX_minus|
+|SYMY|SymmetryY_plus, SymmetryY_minus|
 
 ### [Solved fields](Fields)
 

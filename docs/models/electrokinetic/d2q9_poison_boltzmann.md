@@ -5,8 +5,8 @@ d2q9_poison_boltzmann
 
 ## Details
 [Model description files](Model description) files for this model:
-[Dynamics.c](https://github.com/llaniewski/TCLB/blob/(HEAD detached at 55c8268)/src/d2q9_poison_boltzmann/Dynamics.c.Rt)
-[Dynamics.R](https://github.com/llaniewski/TCLB/blob/(HEAD detached at 55c8268)/src/d2q9_poison_boltzmann/Dynamics.R)
+[Dynamics.c](https://github.com/llaniewski/TCLB/blob/(HEAD detached at c598d42)/src/d2q9_poison_boltzmann/Dynamics.c.Rt)
+[Dynamics.R](https://github.com/llaniewski/TCLB/blob/(HEAD detached at c598d42)/src/d2q9_poison_boltzmann/Dynamics.R)
 
 ### [Zonal Settings](Settings)
 
@@ -52,7 +52,6 @@ d2q9_poison_boltzmann
 |COLLISION|BGK, MRT|
 |DESIGNSPACE|DesignSpace|
 |NONE|None|
-|OBJECTIVE|Inlet, Outlet|
 |SETTINGZONE|DefaultZone|
 
 ### [Solved fields](Fields)

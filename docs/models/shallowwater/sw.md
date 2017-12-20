@@ -10,8 +10,8 @@ Model has adjoint capabilities for unsteady optimization.
 
 ## Details
 [Model description files](Model description) files for this model:
-[Dynamics.c](https://github.com/llaniewski/TCLB/blob/(HEAD detached at 55c8268)/src/sw/Dynamics.c.Rt)
-[Dynamics.R](https://github.com/llaniewski/TCLB/blob/(HEAD detached at 55c8268)/src/sw/Dynamics.R)
+[Dynamics.c](https://github.com/llaniewski/TCLB/blob/(HEAD detached at c598d42)/src/sw/Dynamics.c.Rt)
+[Dynamics.R](https://github.com/llaniewski/TCLB/blob/(HEAD detached at c598d42)/src/sw/Dynamics.R)
 
 ### [Zonal Settings](Settings)
 
@@ -78,7 +78,7 @@ Model has adjoint capabilities for unsteady optimization.
 |COLLISION|BGK, MRT|
 |DESIGNSPACE|DesignSpace|
 |NONE|None|
-|OBJECTIVE|Inlet, Outlet, Obj1|
+|OBJECTIVE|Obj1|
 |SETTINGZONE|DefaultZone|
 
 ### [Solved fields](Fields)

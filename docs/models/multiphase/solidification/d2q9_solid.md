@@ -5,8 +5,8 @@ d2q9_solid
 
 ## Details
 [Model description files](Model description) files for this model:
-[Dynamics.c](https://github.com/llaniewski/TCLB/blob/(HEAD detached at 55c8268)/src/d2q9_solid/Dynamics.c.Rt)
-[Dynamics.R](https://github.com/llaniewski/TCLB/blob/(HEAD detached at 55c8268)/src/d2q9_solid/Dynamics.R)
+[Dynamics.c](https://github.com/llaniewski/TCLB/blob/(HEAD detached at c598d42)/src/d2q9_solid/Dynamics.c.Rt)
+[Dynamics.R](https://github.com/llaniewski/TCLB/blob/(HEAD detached at c598d42)/src/d2q9_solid/Dynamics.R)
 
 ### [Zonal Settings](Settings)
 
@@ -70,7 +70,7 @@ d2q9_solid
 |COLLISION|BGK, MRT|
 |DESIGNSPACE|DesignSpace|
 |NONE|None|
-|OBJECTIVE|Inlet, Outlet, Obj|
+|OBJECTIVE|Obj|
 |SETTINGZONE|DefaultZone|
 
 ### [Solved fields](Fields)

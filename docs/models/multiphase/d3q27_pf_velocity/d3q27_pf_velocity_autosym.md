@@ -5,8 +5,8 @@ The 'd3q27_pf_velocity' model is a multiphase 3D lattice Boltzmann model for the
 
 ## Details
 [Model description files](Model description) files for this model:
-[Dynamics.c](https://github.com/llaniewski/TCLB/blob/(HEAD detached at c598d42)/src/d3q27_pf_velocity/Dynamics.c.Rt)
-[Dynamics.R](https://github.com/llaniewski/TCLB/blob/(HEAD detached at c598d42)/src/d3q27_pf_velocity/Dynamics.R)
+[Dynamics.c](https://github.com/llaniewski/TCLB/blob/(HEAD detached at c598d42)/src/d3q27_pf_velocity_autosym/Dynamics.c.Rt)
+[Dynamics.R](https://github.com/llaniewski/TCLB/blob/(HEAD detached at c598d42)/src/d3q27_pf_velocity_autosym/Dynamics.R)
 
 ### [Zonal Settings](Settings)
 
@@ -96,6 +96,9 @@ The 'd3q27_pf_velocity' model is a multiphase 3D lattice Boltzmann model for the
 |DESIGNSPACE|DesignSpace|
 |NONE|None|
 |SETTINGZONE|DefaultZone|
+|SYMX|SymmetryX_plus, SymmetryX_minus|
+|SYMY|SymmetryY_plus, SymmetryY_minus|
+|SYMZ|SymmetryZ_plus, SymmetryZ_minus|
 
 ### [Solved fields](Fields)
 
