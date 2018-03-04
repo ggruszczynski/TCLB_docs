@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Lukasz Laniewski-Wollk">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Particles in a Pipe - TCLB Reference Manual</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Particles in a Pipe";
+    var mkdocs_page_input_path = "tutorials/particles/particles-in-pipe.md";
+    var mkdocs_page_url = "/tutorials/particles/particles-in-pipe/";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> TCLB Reference Manual</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../..">Welcome to TCLB</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">1. Getting started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../1.-Getting-started/installation/">Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../1.-Getting-started/running-simulation/">Running calculations</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">2. Installation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../2.-Installation/ESYS-Particle/">ESYS-Particle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../2.-Installation/configuration-options/">Configuration options</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../2.-Installation/dependencies/">Dependencies</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">3. Running simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../3.-Running-simulations/case-basics/">Case Basics</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../3.-Running-simulations/examples/">Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../3.-Running-simulations/units/">Units</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../3.-Running-simulations/working-remotely/">Working on a remote host</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">4. Post processing</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../4.-Post-processing/catalyst/">Catalyst</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../4.-Post-processing/paraview/">Analyzing Results with ParaView</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../4.-Post-processing/particles/">Post-processing of particle data</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">5. Model development</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../5.-Model-development/basics/">Model Information</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">XML Reference</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Callbacks/">Callbacks</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Container/">Container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Executions/">Executions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Geometry-Boolean-Operation/">Geometry Boolean Operation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Geometry-Primitive/">Geometry Primitive</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Geometry/">Geometry</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Node-Type-Brush/">Node Type Brush</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Optimization-and-Optimal-Control/">Optimization and Optimal Control</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Params/">Params</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Setup-Elements/">Setup Elements</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Models</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">PDE</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/PDE/wave/">Wave</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/PDE/wave2d/">Wave2d</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Article</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/article/d3q19_heat_adj_art/">D3q19 heat adj art</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Electrokinetic</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/electrokinetic/d2q9_npe_guo/">D2q9 npe guo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/electrokinetic/d2q9_poison_boltzmann/">D2q9 poison boltzmann</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/experimental/d2q9_diff/">D2q9 diff</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/experimental/d2q9_hb/">D2q9 hb</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/experimental/d2q9_inc/">D2q9 inc</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Flow</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d2q9_SRT/">d2q9 SRT</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d2q9_cumulant/">D2q9 cumulant</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d2q9_les/">D2q9 les</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d2q9_thin_film/">D2q9 thin film</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d3q19/">D3q19</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d3q19_les/">D3q19 les</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d3q27/">D3q27</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D2q9</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d2q9/d2q9/">D2q9</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d2q9/d2q9_BC/">d2q9 BC</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D3q27 cumulant</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant/">D3q27 cumulant</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG/">d3q27 cumulant AVG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_IB/">d3q27 cumulant AVG IB</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_IB_SMAG/">d3q27 cumulant AVG IB SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_SMAG/">d3q27 cumulant AVG SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_IB/">d3q27 cumulant IB</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_IB_SMAG/">d3q27 cumulant IB SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_SMAG/">d3q27 cumulant SMAG</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/experimental/d3q27_BGK/">d3q27 BGK</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/experimental/d3q27_BGK_galcor/">d3q27 BGK galcor</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Qibb</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/qibb/d3q27_cumulant_qibb_small/">D3q27 cumulant qibb small</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Heat</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/heat/d3q19_heat/">D3q19 heat</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/heat/experimental/d2q9_heat/">D2q9 heat</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Moving</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/moving/d2q9_plate/">D2q9 plate</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Multiphase</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_csf/">D2q9 csf</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_kuper/">D2q9 kuper</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_pf/">D2q9 pf</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_pf_pressureEvolution/">d2q9 pf pressureEvolution</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/multiphase/d3q19_kuper/">D3q19 kuper</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D2q9 pf velocity</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity/">D2q9 pf velocity</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity_GF/">d2q9 pf velocity GF</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity_RT/">d2q9 pf velocity RT</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D3q27 pf velocity</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/d3q27_pf_velocity/d3q27_pf_velocity/">D3q27 pf velocity</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/d3q27_pf_velocity/d3q27_pf_velocity_SC/">d3q27 pf velocity SC</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/experimental/d2q9_lee/">D2q9 lee</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/experimental/d2q9_pp_LBL/">d2q9 pp LBL</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/experimental/d2q9_pp_MCMP/">d2q9 pp MCMP</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Solidification</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/solidification/d2q9_solid/">D2q9 solid</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Nonnewtonian</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/nonnewtonian/d3q27_viscoplastic/">D3q27 viscoplastic</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Optimization</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/optimization/d2q9_adj/">D2q9 adj</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/optimization/d2q9_optimalMixing/">d2q9 optimalMixing</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/optimization/d3q19_heat_adj/">D3q19 heat adj</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/optimization/experimental/d2q9_heat_adj/">D2q9 heat adj</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Shallowwater</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/shallowwater/sw/">Sw</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Model development</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../model-development/1.-finite-difference-wave-equation/">Finite difference wave equation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../model-development/2.-D2Q9-Single-Relexation-Time/">D2Q9 Single Relexation Time (SRT)</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../model-development/3.-D2Q9-ShanChen-SRT/">D2Q9 Schan-Chen SRT</a>
+                </li>
+    </ul>
+                </li>
+                <li class=" current">
+                    
+    <span class="caption-text">Particles</span>
+    <ul class="subnav">
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">Particles in a Pipe</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l4"><a href="#particles-in-a-pipe">Particles in a Pipe</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#case">Case</a></li>
+        
+            <li><a class="toctree-l5" href="#geometry">Geometry</a></li>
+        
+            <li><a class="toctree-l5" href="#esys-particle-simulation">ESYS-Particle simulation</a></li>
+        
+            <li><a class="toctree-l5" href="#tclb-simulation">TCLB Simulation</a></li>
+        
+            <li><a class="toctree-l5" href="#combining-tclb-and-esys-simulations">Combining TCLB and ESYS simulations</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">TCLB Reference Manual</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Tutorials &raquo;</li>
+        
+      
+        
+          <li>Particles &raquo;</li>
+        
+      
+    
+    <li>Particles in a Pipe</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="particles-in-a-pipe">Particles in a Pipe</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>All these features related to particles are supported only in the
+<a href="https://github.com/llaniewski/TCLB/tree/particles">particle</a> branch</p>
+</div>
+<h2 id="case">Case</h2>
+<p>The case consists of 5 balls of radious 30, placed along Y axis, connected
+by a narrowing cone, like on a picture:</p>
+<p><img alt="Pape case drawing" src="../pipe.png" /></p>
+<p>The particles will be placed in the wide section, and driven by the force
+applied to the flow.</p>
+<h2 id="geometry">Geometry</h2>
+<p>We will use the OpenSCAD software to create the geometry. It will consist of
+four balls connected by a narrowing channel.</p>
+<h3 id="openscad">OpenSCAD</h3>
+<p>You can install OpenSCAD with:</p>
+<div class="codehilite"><pre><span></span>sudo apt install openscad
+</pre></div>
+
+
+<p>The OpenSCAD allow us to create geometries with a script.</p>
+<div class="codehilite"><pre><span></span>R=30;
+D=60;
+translate([R,0,R]) {
+    sphere(d=R*2);
+    for (x=[1:4]) {
+        translate([0,x*D,0]) {
+            sphere(d=R*2);
+        }
+    }
+    rotate([-90,0,0]) cylinder(h=8*R,r1=R,r2=R/2);
+    rotate([90,0,0]) cylinder(h=3*R,r1=R,r2=R);
+    translate([0,4*D,0]) rotate([-90,0,0]) cylinder(h=3*R,r1=R,r2=R);
+}
+</pre></div>
+
+
+<p>You should get a geometry like this:</p>
+<div class="sketchfab-embed-wrapper"><iframe width="640" height="480" src="https://sketchfab.com/models/57273635273048f38e91f19f42586195/embed" frameborder="0" allowvr allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel=""></iframe>
+
+<p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+    <a href="https://sketchfab.com/models/57273635273048f38e91f19f42586195?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Pipe test-case for TCLB</a>
+    by <a href="https://sketchfab.com/llaniewski?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Ł Łaniewski-Wołłk</a>
+    on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campain=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+</p>
+</div>
+
+<p>From OpenSCAD you can export into several file formats. Export an
+ASCII STL file "pipe_txt.stl". Sadly, it is rare for any software to support ASCII STL
+files (which is also the case with TCLB). To create both binary stl file and
+MSH file for ESYS-Particle with a util program provided with TCLB:</p>
+<div class="codehilite"><pre><span></span>tools/stlutil -f pipe_txt.stl -o pipe.stl
+tools/stlutil -f pipe_txt.stl -o pipe.msh
+</pre></div>
+
+
+<h2 id="esys-particle-simulation">ESYS-Particle simulation</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For installation of ESYS-Particle, please refer to the <a href="../../../2.-Installation/ESYS-Particle/">reference</a></p>
+</div>
+<h3 id="configuration">Configuration</h3>
+<p>The ESYS-Particle is simulation is set up in a python script "pipe.py". At
+the begining of the script we have to initialize the <code>sim</code> object:</p>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">esys.lsm</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">esys.lsm.util</span> <span class="kn">import</span> <span class="n">Vec3</span><span class="p">,</span> <span class="n">BoundingBox</span>
+<span class="kn">from</span> <span class="nn">esys.lsm.geometry</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">LsmMpi</span><span class="p">(</span><span class="n">numWorkerProcesses</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mpiDimList</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">initNeighbourSearch</span><span class="p">(</span> <span class="n">particleType</span><span class="o">=</span><span class="s2">&quot;RotSphere&quot;</span><span class="p">,</span> <span class="n">gridSpacing</span><span class="o">=</span><span class="mi">38</span><span class="p">,</span> <span class="n">verletDist</span><span class="o">=</span><span class="mf">0.7</span> <span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">setSpatialDomain</span><span class="p">(</span>
+    <span class="n">BoundingBox</span><span class="p">(</span><span class="n">Vec3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">Vec3</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span><span class="mi">240</span><span class="p">,</span><span class="mi">64</span><span class="p">)),</span>
+    <span class="n">circDimList</span> <span class="o">=</span> <span class="p">[</span><span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">setTimeStepSize</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">setNumTimeSteps</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+
+
+<p>First we read in the mesh:</p>
+<div class="codehilite"><pre><span></span><span class="n">sim</span><span class="o">.</span><span class="n">readMesh</span><span class="p">(</span>
+    <span class="n">fileName</span> <span class="o">=</span> <span class="s2">&quot;pipe.msh&quot;</span><span class="p">,</span>
+    <span class="n">meshName</span> <span class="o">=</span> <span class="s2">&quot;floor_mesh_wall&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>Then we add a set of particles, randomly packed in a rectangle:</p>
+<div class="codehilite"><pre><span></span><span class="n">geoRandomBlock</span> <span class="o">=</span> <span class="n">RandomBoxPacker</span><span class="p">(</span>
+            <span class="n">minRadius</span> <span class="o">=</span> <span class="mf">4.0000</span><span class="p">,</span>
+            <span class="n">maxRadius</span> <span class="o">=</span> <span class="mf">15.0000</span><span class="p">,</span>
+            <span class="n">cubicPackRadius</span> <span class="o">=</span> <span class="mf">11.0000</span><span class="p">,</span>
+            <span class="n">maxInsertFails</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+            <span class="n">bBox</span> <span class="o">=</span> <span class="n">BoundingBox</span><span class="p">(</span>
+            <span class="n">Vec3</span><span class="p">(</span><span class="mf">9.0000</span><span class="p">,</span> <span class="mf">2.0000</span><span class="p">,</span> <span class="mf">9.0000</span><span class="p">),</span>
+            <span class="n">Vec3</span><span class="p">(</span><span class="mf">51.0000</span><span class="p">,</span> <span class="mf">60.0000</span><span class="p">,</span> <span class="mf">51.0000</span><span class="p">)</span>
+    <span class="p">),</span>
+    <span class="n">circDimList</span> <span class="o">=</span> <span class="p">[</span><span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">],</span>
+    <span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1.0000e-05</span>
+<span class="p">)</span>
+<span class="n">geoRandomBlock</span><span class="o">.</span><span class="n">generate</span><span class="p">()</span>
+<span class="n">geoRandomBlock_particles</span> <span class="o">=</span> <span class="n">geoRandomBlock</span><span class="o">.</span><span class="n">getSimpleSphereCollection</span><span class="p">()</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">createParticles</span><span class="p">(</span><span class="n">geoRandomBlock_particles</span><span class="p">)</span>
+</pre></div>
+
+
+<p>We add friction interaction between particles:</p>
+<div class="codehilite"><pre><span></span><span class="n">normalK</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">createInteractionGroup</span> <span class="p">(</span>
+    <span class="n">RotFrictionPrms</span> <span class="p">(</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;friction&quot;</span><span class="p">,</span>
+        <span class="n">normalK</span> <span class="o">=</span> <span class="n">normalK</span><span class="p">,</span>
+        <span class="n">dynamicMu</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span>
+        <span class="n">shearK</span> <span class="o">=</span> <span class="n">normalK</span><span class="o">/</span><span class="mf">10.0</span><span class="p">,</span>
+        <span class="n">staticMu</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span>
+        <span class="n">scaling</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>and elastic interaction between particles and mesh wall:</p>
+<div class="codehilite"><pre><span></span><span class="n">sim</span><span class="o">.</span><span class="n">createInteractionGroup</span> <span class="p">(</span>
+    <span class="n">NRotElasticTriMeshPrms</span> <span class="p">(</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;floorWall_repell&quot;</span><span class="p">,</span>
+        <span class="n">meshName</span> <span class="o">=</span> <span class="s2">&quot;floor_mesh_wall&quot;</span><span class="p">,</span>
+        <span class="n">normalK</span> <span class="o">=</span> <span class="n">normalK</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>To start up the movement we add a small acceleration ($10^{-5}$):</p>
+<div class="codehilite"><pre><span></span><span class="n">sim</span><span class="o">.</span><span class="n">createInteractionGroup</span> <span class="p">(</span>
+    <span class="n">GravityPrms</span> <span class="p">(</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;gravity&quot;</span><span class="p">,</span>
+        <span class="n">acceleration</span> <span class="o">=</span> <span class="n">Vec3</span><span class="p">(</span><span class="mf">0.0000</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="mf">0.0000</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>To visualize the results, we add a check-pointer, which will write dump
+files:</p>
+<div class="codehilite"><pre><span></span><span class="n">sim</span><span class="o">.</span><span class="n">createCheckPointer</span> <span class="p">(</span>
+    <span class="n">CheckPointPrms</span> <span class="p">(</span>
+        <span class="n">fileNamePrefix</span> <span class="o">=</span> <span class="s2">&quot;flow_data&quot;</span><span class="p">,</span>
+        <span class="n">beginTimeStep</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">endTimeStep</span> <span class="o">=</span> <span class="mi">20000</span><span class="p">,</span>
+        <span class="n">timeStepIncr</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>Finnaly, we finish the "pipe.py" file with the execution of the simulation:</p>
+<div class="codehilite"><pre><span></span><span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+
+
+<h3 id="running-esys-particle">Running ESYS-Particle</h3>
+<p>We declared that we will use 1 worker process. ESYS works in a master-slave
+architecture, where master process is a python interpreter. That means that
+we need to run our simulation with two processes:</p>
+<div class="codehilite"><pre><span></span>mpirun -np <span class="m">2</span> esysparticle pipe.py
+</pre></div>
+
+
+<div class="admonition note">
+<p class="admonition-title">Post-Processing</p>
+<p>To learn how to post-process results from ESYS-Particle please refer
+to <a href="../../../4.-Post-processing/particles/">another section of this manual</a></p>
+</div>
+<h2 id="tclb-simulation">TCLB Simulation</h2>
+<p>The fluid flow simulation will be a simple periodic flow in a pipe with
+gravity force.</p>
+<p>To run the example we will use the <code>d3q27_cumulant_part</code> model.</p>
+<div class="codehilite"><pre><span></span>make -j <span class="m">4</span> d3q27_cumulant_part
+</pre></div>
+
+
+<div class="admonition note">
+<p class="admonition-title">Compilation</p>
+<p>For instructions on how to compile and run TCLB please refer to the
+<a href="../../../1.-Getting-started/installation/">Getting Started guide</a></p>
+</div>
+<h3 id="configuration_1">Configuration</h3>
+<p>Like any TCLB configuration (<code>pipe.xml</code>) we start with declaring the output directory,
+size of domain and initialize the domain with the collision operator:</p>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;CLBConfig</span> <span class="na">version=</span><span class="s">&quot;2.0&quot;</span> <span class="na">output=</span><span class="s">&quot;output/3D/&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Geometry</span> <span class="na">nx=</span><span class="s">&quot;64&quot;</span> <span class="na">ny=</span><span class="s">&quot;240&quot;</span> <span class="na">nz=</span><span class="s">&quot;64&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;MRT&gt;&lt;Box/&gt;&lt;/MRT&gt;</span>
+</pre></div>
+
+
+<p>Now we can add our STL geometry. We want mark all elements <em>outside</em> of the
+geometry with <code>Wall</code> elements (and switch off collision):</p>
+<div class="codehilite"><pre><span></span>                <span class="nt">&lt;Wall</span> <span class="na">mask=</span><span class="s">&quot;ALL&quot;</span><span class="nt">&gt;</span>
+                       <span class="nt">&lt;STL</span> <span class="na">file=</span><span class="s">&quot;pipe.stl&quot;</span> <span class="na">side=</span><span class="s">&quot;out&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;/Wall&gt;</span>
+</pre></div>
+
+
+<p>We now close the geometry element and begin to set up the simulation
+settings:</p>
+<div class="codehilite"><pre><span></span>        <span class="nt">&lt;/Geometry&gt;</span>
+        <span class="nt">&lt;Model&gt;</span>
+                <span class="nt">&lt;Params</span> <span class="na">ForceY=</span><span class="s">&quot;0.0001&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;Params</span> <span class="na">omega=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Model&gt;</span>
+</pre></div>
+
+
+<p>After that we have everything ready. We can declare what output we need and
+how many iterations we wan to execute:</p>
+<div class="codehilite"><pre><span></span>        <span class="nt">&lt;Failcheck</span> <span class="na">Iterations=</span><span class="s">&quot;1000&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;VTK/&gt;</span>
+        <span class="nt">&lt;VTK</span> <span class="na">Iterations=</span><span class="s">&quot;1000&quot;</span> <span class="na">what=</span><span class="s">&quot;U,Solid&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Solve</span> <span class="na">Iterations=</span><span class="s">&quot;10000&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/CLBConfig&gt;</span>
+</pre></div>
+
+
+<h3 id="running-tclb">Running TCLB</h3>
+<p>If we are running on GPU, at this stage we can use a single GPU:</p>
+<div class="codehilite"><pre><span></span>CLB/d3q27_cumulant_part/main pipe.xml
+</pre></div>
+
+
+<p>If you are running on CPU, it's probably best to use all the avaliable CPU
+cores:</p>
+<div class="codehilite"><pre><span></span>mpirun -np <span class="m">4</span> CLB/d3q27_cumulant_part/main pipe.xml
+</pre></div>
+
+
+<h3 id="results">Results</h3>
+<p>In ParaView you can inspect the results. The initiali VTK drop includes all
+fields, which means that you can check if the boudaries are in the right
+places etc. You can also check what is the maximal velocity.</p>
+<h2 id="combining-tclb-and-esys-simulations">Combining TCLB and ESYS simulations</h2>
+<h3 id="configuration_2">Configuration</h3>
+<p>To combine the two simulations we add the <code>&lt;RemoteForceInterface&gt;</code> element
+to the configuration file (say <code>pipe_dem.xml</code>) to the <code>&lt;Model&gt;</code> container.
+This will include our settings for the particle simulation:</p>
+<div class="codehilite"><pre><span></span>        <span class="nt">&lt;RemoteForceInterface</span> <span class="na">Iterations=</span><span class="s">&quot;10000&quot;</span> <span class="na">particle=</span><span class="s">&quot;RotSphere&quot;</span> <span class="na">verletDist=</span><span class="s">&quot;0.7&quot;</span> <span class="na">gridSpacing=</span><span class="s">&quot;38&quot;</span><span class="nt">&gt;</span>
+sim.readMesh(
+    fileName = &quot;pipe.msh&quot;,
+    meshName = &quot;floor_mesh_wall&quot;
+)
+
+geoRandomBlock = RandomBoxPacker(
+    minRadius = 4.0000,
+    maxRadius = 15.0000,
+    cubicPackRadius = 11.0000,
+    maxInsertFails = 1000,
+    bBox = BoundingBox(
+    Vec3(9.0000, 2.0000, 9.0000),
+    Vec3(51.0000, 60.0000, 51.0000)
+    ),
+    circDimList = [False, False, False],
+    tolerance = 1.0000e-05
+    )
+geoRandomBlock.generate()
+geoRandomBlock_particles = geoRandomBlock.getSimpleSphereCollection()
+sim.createParticles(geoRandomBlock_particles)
+sim.setParticleDensity (   tag = 0,   mask = -1,   Density = 2.0)
+
+normalK = 3;
+
+sim.createInteractionGroup (
+    RotFrictionPrms (
+        name = &quot;friction&quot;,
+        normalK = normalK,
+        dynamicMu = 0.6,
+        shearK = normalK/10.0,
+        staticMu = 0.6,
+        scaling = True
+        )
+    )
+
+sim.createInteractionGroup (
+    NRotElasticTriMeshPrms (
+        name = &quot;floorWall_repell&quot;,
+        meshName = &quot;floor_mesh_wall&quot;,
+        normalK = normalK
+        )
+    )
+
+sim.createInteractionGroup (
+    GravityPrms (
+        name = &quot;gravity&quot;,
+        acceleration = Vec3(0.0000, 1e-5, 0.0000)
+        )
+    )
+
+sim.createCheckPointer (
+    CheckPointPrms (
+        fileNamePrefix = &quot;flow_data&quot;,
+        beginTimeStep = 0,
+        endTimeStep = 20000,
+        timeStepIncr = 100
+        )
+    )
+        <span class="nt">&lt;/RemoteForceInterface&gt;</span>
+</pre></div>
+
+
+<p>We deleted the now the gravity force acting on the particles, and rely only
+on the force applied to the fluid flow.</p>
+<h3 id="running-tclb-and-esys">Running TCLB and ESYS</h3>
+<p>Our simulation is set up to be executed in a Spawning approach. This means
+that we will run TCLB, and TCLB will dynamically spawn ESYS-Particle code.</p>
+<p>To say to MPI that we have a limited number of slots for process execution
+(cores), we need to create a hostfile:</p>
+<div class="codehilite"><pre><span></span>localhost
+localhost
+localhost
+localhost
+</pre></div>
+
+
+<p>This hostfile is very simple, and just says that we have 4 avaliable slots
+on our computer (localhost). In a multi-computer setup (eg. cluster), we
+would specify all the nodes involved.</p>
+<p>Now we can run TCLB with:</p>
+<div class="codehilite"><pre><span></span>mpirun -hostfile hostfile -np <span class="m">1</span> CLB/d3q27_cumulant_part/main pipe.xml
+</pre></div>
+
+
+<p>This will execute a single process of TCLB, which will in turn spawn 3
+processes of ESYS (it will fill up the avaliable space). This means that it
+will run a single master process and 2 worker processes. It will also
+generate the Python setup file for ESYS, with appropriate division of the
+domain and number of processes. You can inspect the generated file, which is
+it <code>output/pipe_ESYS.py</code>.</p>
+<h4 id="mpmd">MPMD</h4>
+<p>We can also run the case in a Multiple Program Multiple Data (MPMD) approach.
+This means executing both programs at the same time. As ESYS is executed
+immediately, we have to provide our own Python configuration file. In our
+case, we can use the <code>output/pipe_ESYS.py</code> as the template.</p>
+<p>To run the both codes we use the runmpi's MPMD syntax:</p>
+<div class="codehilite"><pre><span></span>mpirun -np <span class="m">1</span> CLB/d3q27_cumulant_part/main pipe.xml : -np <span class="m">3</span> esysparticle pipe.py
+</pre></div>
+
+
+<p>As the configuration for ESYS is not generated we can delete all contents of
+the <code>&lt;RemoteForceInterface&gt;</code> XML element (but we have to keep it, so that
+TCLB knows we want to connect with ESYS.</p>
+<h3 id="results_1">Results</h3>
+<p>Both the fluid results and particle data can be loaded into ParaView.
+ParaView also reads stl files. The example results look like this:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OL-wsA36kYI?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../../model-development/3.-D2Q9-ShanChen-SRT/" class="btn btn-neutral" title="D2Q9 Schan-Chen SRT"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../model-development/3.-D2Q9-ShanChen-SRT/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../../search/require.js"></script>
+      <script src="../../../search/search.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Lukasz Laniewski-Wollk">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Finite difference wave equation - TCLB Reference Manual</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Finite difference wave equation";
+    var mkdocs_page_input_path = "tutorials/model-development/1.-finite-difference-wave-equation.md";
+    var mkdocs_page_url = "/tutorials/model-development/1.-finite-difference-wave-equation/";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> TCLB Reference Manual</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../..">Welcome to TCLB</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">1. Getting started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../1.-Getting-started/installation/">Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../1.-Getting-started/running-simulation/">Running calculations</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">2. Installation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../2.-Installation/ESYS-Particle/">ESYS-Particle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../2.-Installation/configuration-options/">Configuration options</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../2.-Installation/dependencies/">Dependencies</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">3. Running simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../3.-Running-simulations/case-basics/">Case Basics</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../3.-Running-simulations/examples/">Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../3.-Running-simulations/units/">Units</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../3.-Running-simulations/working-remotely/">Working on a remote host</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">4. Post processing</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../4.-Post-processing/catalyst/">Catalyst</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../4.-Post-processing/paraview/">Analyzing Results with ParaView</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../4.-Post-processing/particles/">Post-processing of particle data</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">5. Model development</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../5.-Model-development/basics/">Model Information</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">XML Reference</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Callbacks/">Callbacks</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Container/">Container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Executions/">Executions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Geometry-Boolean-Operation/">Geometry Boolean Operation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Geometry-Primitive/">Geometry Primitive</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Geometry/">Geometry</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Node-Type-Brush/">Node Type Brush</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Optimization-and-Optimal-Control/">Optimization and Optimal Control</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Params/">Params</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Setup-Elements/">Setup Elements</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Models</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">PDE</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/PDE/wave/">Wave</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/PDE/wave2d/">Wave2d</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Article</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/article/d3q19_heat_adj_art/">D3q19 heat adj art</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Electrokinetic</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/electrokinetic/d2q9_npe_guo/">D2q9 npe guo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/electrokinetic/d2q9_poison_boltzmann/">D2q9 poison boltzmann</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/experimental/d2q9_diff/">D2q9 diff</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/experimental/d2q9_hb/">D2q9 hb</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/experimental/d2q9_inc/">D2q9 inc</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Flow</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d2q9_SRT/">d2q9 SRT</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d2q9_cumulant/">D2q9 cumulant</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d2q9_les/">D2q9 les</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d2q9_thin_film/">D2q9 thin film</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d3q19/">D3q19</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d3q19_les/">D3q19 les</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d3q27/">D3q27</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D2q9</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d2q9/d2q9/">D2q9</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d2q9/d2q9_BC/">d2q9 BC</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D3q27 cumulant</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant/">D3q27 cumulant</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG/">d3q27 cumulant AVG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_IB/">d3q27 cumulant AVG IB</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_IB_SMAG/">d3q27 cumulant AVG IB SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_SMAG/">d3q27 cumulant AVG SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_IB/">d3q27 cumulant IB</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_IB_SMAG/">d3q27 cumulant IB SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_SMAG/">d3q27 cumulant SMAG</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/experimental/d3q27_BGK/">d3q27 BGK</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/experimental/d3q27_BGK_galcor/">d3q27 BGK galcor</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Qibb</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/qibb/d3q27_cumulant_qibb_small/">D3q27 cumulant qibb small</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Heat</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/heat/d3q19_heat/">D3q19 heat</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/heat/experimental/d2q9_heat/">D2q9 heat</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Moving</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/moving/d2q9_plate/">D2q9 plate</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Multiphase</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_csf/">D2q9 csf</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_kuper/">D2q9 kuper</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_pf/">D2q9 pf</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_pf_pressureEvolution/">d2q9 pf pressureEvolution</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/multiphase/d3q19_kuper/">D3q19 kuper</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D2q9 pf velocity</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity/">D2q9 pf velocity</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity_GF/">d2q9 pf velocity GF</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity_RT/">d2q9 pf velocity RT</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D3q27 pf velocity</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/d3q27_pf_velocity/d3q27_pf_velocity/">D3q27 pf velocity</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/d3q27_pf_velocity/d3q27_pf_velocity_SC/">d3q27 pf velocity SC</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/experimental/d2q9_lee/">D2q9 lee</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/experimental/d2q9_pp_LBL/">d2q9 pp LBL</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/experimental/d2q9_pp_MCMP/">d2q9 pp MCMP</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Solidification</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/solidification/d2q9_solid/">D2q9 solid</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Nonnewtonian</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/nonnewtonian/d3q27_viscoplastic/">D3q27 viscoplastic</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Optimization</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/optimization/d2q9_adj/">D2q9 adj</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/optimization/d2q9_optimalMixing/">d2q9 optimalMixing</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/optimization/d3q19_heat_adj/">D3q19 heat adj</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/optimization/experimental/d2q9_heat_adj/">D2q9 heat adj</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Shallowwater</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/shallowwater/sw/">Sw</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <span class="caption-text">Model development</span>
+    <ul class="subnav">
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">Finite difference wave equation</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l4"><a href="#finite-difference-wave-equation">Finite difference wave equation</a></li>
+    
+
+    <li class="toctree-l4"><a href="#finite-difference-wave-equation_1">Finite difference wave equation</a></li>
+    
+
+    <li class="toctree-l4"><a href="#implementation">Implementation</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#creating-a-model">Creating a model</a></li>
+        
+            <li><a class="toctree-l5" href="#first-dynamics">First dynamics</a></li>
+        
+            <li><a class="toctree-l5" href="#adding-quantities">Adding Quantities</a></li>
+        
+            <li><a class="toctree-l5" href="#running-a-case">Running a case</a></li>
+        
+            <li><a class="toctree-l5" href="#settings">Settings</a></li>
+        
+            <li><a class="toctree-l5" href="#introducing-fd">Introducing FD</a></li>
+        
+            <li><a class="toctree-l5" href="#make-it-nicer">Make it nicer:</a></li>
+        
+            <li><a class="toctree-l5" href="#node-types">Node types</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../2.-D2Q9-Single-Relexation-Time/">2. D2Q9 Single Relexation Time</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../3.-D2Q9-ShanChen-SRT/">3. D2Q9 ShanChen SRT</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Particles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../particles/particles-in-pipe/">Particles in pipe</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">TCLB Reference Manual</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Tutorials &raquo;</li>
+        
+      
+        
+          <li>Model development &raquo;</li>
+        
+      
+    
+    <li>Finite difference wave equation</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="finite-difference-wave-equation">Finite difference wave equation</h1>
+<p>These tutorials will try to teach you how to make and use a new model in TCLB. First it will discuss our goal: the model we want to create. Then it will take you step by step, on how to create all the needed components.</p>
+<h1 id="finite-difference-wave-equation_1">Finite difference wave equation</h1>
+<p>We want to discretize the <a href="https://en.wikipedia.org/wiki/Wave_equation">Wave Equation</a>:</p>
+<p>
+<script type="math/tex; mode=display">\ddot{u} = c^2\Delta u</script>
+</p>
+<p>For this purpose we will use Finite Difference method. First we change the equation into two first order (in time) equations:</p>
+<p>
+<script type="math/tex; mode=display">\left\{\begin{eqnarray} \dot{v} =  &c^2\Delta u \\ \dot{u} =  &v  \end{eqnarray}\right.</script>
+</p>
+<p>Now let us discretise the <a href="https://en.wikipedia.org/wiki/Laplace_operator">Laplace operator</a> with simple finite difference (in 2D):</p>
+<p>
+<script type="math/tex; mode=display">\Delta u \approx \frac{(u_{i-1,j}+u_{i+1,j}+u_{i,j-1}+u_{i,j+1}-4u_{i,j})}{(dx^2)}</script>
+</p>
+<p>Finnaly we will use, what is called <a href="https://en.wikipedia.org/wiki/Semi-implicit_Euler_method">Semi-implicit Euler rule</a> to integrate this equation in time. This will give us:</p>
+<p>
+<script type="math/tex; mode=display">\left\{\begin{eqnarray} v^{n+1}_{i,j} &= v^n_{i,j}+dt c^2\Delta u^n \\ u^{n+1}_{i,j} &= u^n_{i,j} +dtv^{n+1}_{i,j} \end{eqnarray}\right.</script>
+</p>
+<p>The semi-implicit-ness can be seen in the index of <code>v</code> in the second line</p>
+<p>Finnaly: we will get rid of all units by assuming <code>dx</code> and <code>dt</code> equal to 1</p>
+<h1 id="implementation">Implementation</h1>
+<h2 id="creating-a-model">Creating a model</h2>
+<p>Every model in TCLB is defined by a subdirectory of <code>models</code>. Let us now create a new one:</p>
+<div class="codehilite"><pre><span></span>mkdir models/tutorial/wave
+touch models/tutorial/wave/conf.mk
+</pre></div>
+
+
+<p>The <code>conf.mk</code> file stores some additional settings for a model, but it also tells TCLB that this directory is in fact a model.</p>
+<p>Now we have to add two main files defining everything: <code>Dynamics.R</code> - defining all the setup of the model, and <code>Dynamics.c</code> - defining what will be happening in a node.</p>
+<div class="codehilite"><pre><span></span>touch models/tutorial/wave/Dynamics.R
+touch models/tutorial/wave/Dynamics.c
+</pre></div>
+
+
+<p>We want to have two Fields: <code>u</code> and <code>v</code>. We define them in <code>Dynamics.R</code>:</p>
+<div class="codehilite"><pre><span></span>AddField<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;u&quot;</span><span class="p">)</span>
+AddField<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;v&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Then we need the main dynamics of a node. First let us write down the functions that will be used in the model(in Dynamics.c):</p>
+<div class="codehilite"><pre><span></span><span class="n">CudaDeviceFunction</span> <span class="n">float2</span> <span class="nf">Color</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">float2</span> <span class="n">ret</span><span class="p">;</span>
+  <span class="n">ret</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">ret</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">CudaDeviceFunction</span> <span class="kt">void</span> <span class="nf">Init</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+
+<span class="n">CudaDeviceFunction</span> <span class="kt">void</span> <span class="nf">Run</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+</pre></div>
+
+
+<p>The <code>CudaDeviceFunction</code> prefix is needed for all functions in <code>Dynamics.c</code> for technical reasons. We needed to fill only the <code>Color</code> function, as it is the only one which returns a value. For now, the model doesn't do much. Before continuing, let us first understand what these function do:</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Init</code></td>
+<td>This function is called in all the nodes at the beginning of the simulation. All the initialization happens here.</td>
+</tr>
+<tr>
+<td><code>Run</code></td>
+<td>This function will be called in every node in every iteration - it is the main dynamic of a node.</td>
+</tr>
+<tr>
+<td><code>Color</code></td>
+<td>This function is useful only for the version of CLB with enabled graphics(<code>./configure --enable-graphics</code>). It calculates the level <code>x</code> on which the color of a pixel will be based. In most cases this will be temperature or velocity.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="first-dynamics">First dynamics</h2>
+<p>First, we want to initialize our fields(<code>Dynamics.c</code>):</p>
+<div class="codehilite"><pre><span></span><span class="n">CudaDeviceFunction</span> <span class="kt">void</span> <span class="nf">Init</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">u</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Then let us start with a model that just preserves both fields without changing them. In TCLB we access fields with a notation <code>u(dx,dy)</code>, where <code>dx</code> and <code>dy</code> is the position from which to take the field, relative to the current node(<code>Dynamics.c</code>):</p>
+<div class="codehilite"><pre><span></span><span class="n">CudaDeviceFunction</span> <span class="kt">void</span> <span class="nf">Run</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">u</span> <span class="o">=</span> <span class="n">u</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+  <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2 id="adding-quantities">Adding Quantities</h2>
+<p>Finally we want to access the resulting data. In TCLB, the data that will be exported to VTK, TXT or other format, are called [[Quantities]]. Let us add a quantity <code>U</code> to <code>Dynamics.R</code>:</p>
+<div class="codehilite"><pre><span></span>AddQuantity<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;U&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Now we have to add the calculation(<code>Dynamics.c</code>):</p>
+<div class="codehilite"><pre><span></span><span class="n">CudaDeviceFunction</span> <span class="n">real_t</span> <span class="nf">getU</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">u</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2 id="running-a-case">Running a case</h2>
+<p>Now we need to create a case file (let's call it <code>example.xml</code>):</p>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;CLBConfig</span> <span class="na">output=</span><span class="s">&quot;output/&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Geometry</span> <span class="na">nx=</span><span class="s">&quot;128&quot;</span> <span class="na">ny=</span><span class="s">&quot;128&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/Geometry&gt;</span>
+    <span class="nt">&lt;Model&gt;</span>
+    <span class="nt">&lt;/Model&gt;</span>
+    <span class="nt">&lt;VTK</span> <span class="na">Iterations=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Solve</span> <span class="na">Iterations=</span><span class="s">&quot;1000&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/CLBConfig&gt;</span>
+</pre></div>
+
+
+<p>This case will create a mesh of 128x128 nodes, initialize it and run 1000 iterations. It will also save VTK output every 10 iterations.</p>
+<p>In order to run it:</p>
+<div class="codehilite"><pre><span></span>make configure
+./configure --enable-graphics
+make wave
+CLB/wave/main example.xml
+</pre></div>
+
+
+<p>The results are not so impressive now, because basically, not only nothing is happening in a node, but also it is initialized with 0.</p>
+<h2 id="settings">Settings</h2>
+<p>Let us introduce two <a href="../Settings">settings</a> to our model(<code>Dynamics.R</code>):</p>
+<div class="codehilite"><pre><span></span>AddSetting<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;Speed&quot;</span><span class="p">)</span>
+AddSetting<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;Value&quot;</span><span class="p">,</span> zonal<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Where <code>Speed</code> will be our parameter <code>k</code> in the wave equation, and <code>Value</code> will be the initial value of <code>u</code>. [[Settings]] which we want to be changing in the domain, are called "zonal". Settings are provided to us as variables in <code>Dynamics.c</code>. Additionally, we need to modify <code>Color</code> function to observe the change in values in preview window:</p>
+<div class="codehilite"><pre><span></span><span class="n">CudaDeviceFunction</span> <span class="n">float2</span> <span class="nf">Color</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">float2</span> <span class="n">ret</span><span class="p">;</span>
+  <span class="n">ret</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">getU</span><span class="p">();</span>
+  <span class="n">ret</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">CudaDeviceFunction</span> <span class="kt">void</span> <span class="nf">Init</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">u</span> <span class="o">=</span> <span class="n">Value</span><span class="p">;</span>
+  <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Now we can name a region in our domain, and initialize it with a different value:</p>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;CLBConfig</span> <span class="na">output=</span><span class="s">&quot;output/&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Geometry</span> <span class="na">nx=</span><span class="s">&quot;128&quot;</span> <span class="na">ny=</span><span class="s">&quot;128&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;None</span> <span class="na">name=</span><span class="s">&quot;box&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;Box</span> <span class="na">dx=</span><span class="s">&quot;60&quot;</span> <span class="na">nx=</span><span class="s">&quot;20&quot;</span> <span class="na">dy=</span><span class="s">&quot;20&quot;</span> <span class="na">ny=</span><span class="s">&quot;30&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;/None&gt;</span>
+    <span class="nt">&lt;/Geometry&gt;</span>
+    <span class="nt">&lt;Model&gt;</span>
+                <span class="nt">&lt;Params</span> <span class="na">Value=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;Params</span> <span class="na">Value-box=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Model&gt;</span>
+    <span class="nt">&lt;VTK</span> <span class="na">Iterations=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Solve</span> <span class="na">Iterations=</span><span class="s">&quot;1000&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/CLBConfig&gt;</span>
+</pre></div>
+
+
+<p>This will mark a box 20x30 starting from the point (60,20) as a zone called 'box'. Then in the <code>&lt;Model&gt;</code> we first set <code>Value</code> in all zones to <code>0</code>, then set it to <code>1</code> in 'box'. </p>
+<p>Notice: Don't forget to compile(<code>make wave</code>) the model again before running it after making any changes to <code>Dynamics.c</code> or <code>Dynamics.R</code>.</p>
+<p>You will see that the results now are much more interesting. Ok. I'm joking, they are sill constant - but at least not 0.</p>
+<h2 id="introducing-fd">Introducing FD</h2>
+<p>Now we want to introduce the discretisation of our wave equation in to the mix:</p>
+<div class="codehilite"><pre><span></span><span class="n">CudaDeviceFunction</span> <span class="kt">void</span> <span class="nf">Run</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">real_t</span> <span class="n">lap_u</span> <span class="o">=</span> <span class="n">u</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">u</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">u</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">u</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">u</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+  <span class="n">real_t</span> <span class="n">a</span> <span class="o">=</span> <span class="n">Speed</span> <span class="o">*</span> <span class="n">Speed</span> <span class="o">*</span> <span class="n">lap_u</span><span class="p">;</span>
+  <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">a</span><span class="p">;</span>
+  <span class="n">u</span> <span class="o">=</span> <span class="n">u</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">v</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>You can see that we assumed <code>dx</code> and <code>dt</code> equal to 1 (it will be more clear why, later on).</p>
+<p>And now ... <strong>it won't compile</strong>. Why? The error is a bit obscure, like with many C++ Templates errors, but the reason is simple. We didn't tell the code that we want to access <code>u</code> in our neighbors. This is crucial, because the code have to know exactly were things are accessed, to prepare the right communication buffers. You can imagine that the neighboring node is on a different GPU on a different computer. Then we need this computer to know that it will have to send this data to us. On the other hand we want to send as small packets of information as possible, that is why the code have to be <em>conservative</em> wrt. to the possible access patterns. We define this information in <code>Dynamics.R</code>:</p>
+<div class="codehilite"><pre><span></span>AddField<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;u&quot;</span><span class="p">,</span> dx<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> dy<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
+</pre></div>
+
+
+<p>If you don't know <a href="https://www.r-project.org/">R</a> then you need to know that <code>c(...)</code> means a vector/table of numbers. The above line means that the field <code>u</code> can be accessed for <code>dx</code> from -1 to 1 and <code>dy</code> from -1 to 1. Making it simple: we can access it from all of our 8 neighbors and ourselves. The other way (a shortcut) to express it would be:</p>
+<div class="codehilite"><pre><span></span>AddField<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;u&quot;</span><span class="p">,</span> stencil2d<span class="o">=</span><span class="m">1</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Which means the same thing (<code>stencil3d</code> would mean also -1 to 1 in <code>z</code> direction)</p>
+<p>Now, the code compiles. We can add another parameter</p>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;Params</span> <span class="na">Speed=</span><span class="s">&quot;0.05&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
+
+
+<p>to our case file, run and see how the wave propagates.</p>
+<h2 id="make-it-nicer">Make it nicer:</h2>
+<p>We see that the result isn't very beautiful. It is partly because of our discretization, partly because the <a href="https://en.wikipedia.org/wiki/Sinc_function">Fourier transform of a rectangle</a> isn't very nice. Let us introduce viscosity/drag to the system:</p>
+<div class="codehilite"><pre><span></span><span class="n">CudaDeviceFunction</span> <span class="kt">void</span> <span class="nf">Run</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">real_t</span> <span class="n">lap_u</span> <span class="o">=</span> <span class="n">u</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">u</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">u</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">u</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">u</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+  <span class="n">real_t</span> <span class="n">lap_v</span> <span class="o">=</span> <span class="n">v</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">v</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">v</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">v</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">v</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+  <span class="n">real_t</span> <span class="n">a</span> <span class="o">=</span> <span class="n">Speed</span> <span class="o">*</span> <span class="n">Speed</span> <span class="o">*</span> <span class="n">lap_u</span> <span class="o">+</span> <span class="n">Viscosity</span> <span class="o">*</span> <span class="n">lap_v</span><span class="p">;</span>
+  <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">a</span><span class="p">;</span>
+  <span class="n">u</span> <span class="o">=</span> <span class="n">u</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">v</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>Remember:</strong> you have to modify the <code>v</code> field access pattern, and add a <code>Viscosity</code> setting in <code>Dynamics.R</code>.</p>
+<p>Now you can play a bit with the settings to see some nice waves propagating. It can be seen now more clearly that <strong>the domain in TCLB is always periodic</strong>. That is simply because it is the most general case. If you want to make your domain non-periodic - you must add boundary conditions - otherwise, whatever leaves on one side - comes back on the other.</p>
+<h2 id="node-types">Node types</h2>
+<p>Now we can add <a href="TODO:polinkować">node types</a> that will change the behavior of some, selected nodes. For instance, let us have a Dirichlet boundary condition. We want the nodes that are on the boundary to set <code>u</code> and <code>v</code> to a fixed value. Let's call such nodes <code>Dirichlet</code>. We define a new node type (yes, you guessed: in <code>Dynamics.R</code>):</p>
+<div class="codehilite"><pre><span></span>AddNodeType<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;Dirichlet&quot;</span><span class="p">,</span> group<span class="o">=</span><span class="s">&quot;BOUNDARY&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>You can notice that node types have 'groups' (note: these groups, customary are with all caps). Each node can only be of one type ... from each group. You can imagine it like this: in each node we want to be able to set <em>separately</em> a boundary condition, choose a discretization model and add a heat source. But you cannot set <em>two</em> boundary conditions in the same node, from the same group.</p>
+<p>Now, when we have this node type, we can use it to change the dynamics:</p>
+<div class="codehilite"><pre><span></span><span class="n">CudaDeviceFunction</span> <span class="kt">void</span> <span class="nf">Run</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">real_t</span> <span class="n">lap_u</span> <span class="o">=</span> <span class="n">u</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">u</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">u</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">u</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">u</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+  <span class="n">real_t</span> <span class="n">lap_v</span> <span class="o">=</span> <span class="n">v</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">v</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">v</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">v</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">v</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+  <span class="n">real_t</span> <span class="n">a</span> <span class="o">=</span> <span class="n">Speed</span> <span class="o">*</span> <span class="n">Speed</span> <span class="o">*</span> <span class="n">lap_u</span> <span class="o">+</span> <span class="n">Viscosity</span> <span class="o">*</span> <span class="n">lap_v</span><span class="p">;</span>
+  <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">a</span><span class="p">;</span>
+  <span class="n">u</span> <span class="o">=</span> <span class="n">u</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">v</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">((</span><span class="n">NodeType</span> <span class="o">&amp;</span> <span class="n">NODE_BOUNDARY</span><span class="p">)</span> <span class="o">==</span> <span class="n">NODE_Dirichlet</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">Value</span><span class="p">;</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>You can notice that we re-used the same zonal setting <code>Value</code> in this boundary condition. You can also notice, that the main calculation is still executed in the Dirichlet nodes. You can test it and see which version runs faster. Such additional computation can sometimes have a favorable impact on the performance on GPU, because of thing called <a href="http://stackoverflow.com/questions/17223640/is-branch-divergence-really-so-bad">branching</a>.</p>
+<p>Now, we can set some Dirichlet elements in the case file:</p>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;CLBConfig</span> <span class="na">output=</span><span class="s">&quot;output/&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Geometry</span> <span class="na">nx=</span><span class="s">&quot;128&quot;</span> <span class="na">ny=</span><span class="s">&quot;128&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;Dirichlet</span> <span class="na">name=</span><span class="s">&quot;border&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;Box</span> <span class="na">nx=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+                        <span class="nt">&lt;Box</span> <span class="na">dx=</span><span class="s">&quot;-1&quot;</span><span class="nt">/&gt;</span>
+                        <span class="nt">&lt;Box</span> <span class="na">ny=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+                        <span class="nt">&lt;Box</span> <span class="na">dy=</span><span class="s">&quot;-1&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;/Dirichlet&gt;</span>
+                <span class="nt">&lt;None</span> <span class="na">name=</span><span class="s">&quot;box&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;Box</span> <span class="na">dx=</span><span class="s">&quot;60&quot;</span> <span class="na">nx=</span><span class="s">&quot;20&quot;</span> <span class="na">dy=</span><span class="s">&quot;20&quot;</span> <span class="na">ny=</span><span class="s">&quot;30&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;/None&gt;</span>
+    <span class="nt">&lt;/Geometry&gt;</span>
+    <span class="nt">&lt;Model&gt;</span>
+                <span class="nt">&lt;Params</span> <span class="na">Value=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;Params</span> <span class="na">Value-box=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;Params</span> <span class="na">Value-border=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;Params</span> <span class="na">Speed=</span><span class="s">&quot;0.05&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;Params</span> <span class="na">Viscosity=</span><span class="s">&quot;0.001&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Model&gt;</span>
+    <span class="nt">&lt;VTK</span> <span class="na">Iterations=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Solve</span> <span class="na">Iterations=</span><span class="s">&quot;10000&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/CLBConfig&gt;</span>
+</pre></div>
+
+
+<p>We can notice the difference immediately. The waves are bouncing from the walls now.</p>
+<p>In this case, we had a simple situation, as we have only one group of node types (and only one type), but normally we would have to distinguish between them. It would be done with:</p>
+<div class="codehilite"><pre><span></span><span class="k">if</span> <span class="p">((</span><span class="n">NodeType</span> <span class="o">&amp;</span> <span class="n">NODE_BOUNDARY</span><span class="p">)</span> <span class="o">==</span> <span class="n">NODE_Dirichlet</span><span class="p">)</span> <span class="p">{</span>
+ <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><span class="k">switch</span> <span class="p">(</span><span class="n">NodeType</span> <span class="o">&amp;</span> <span class="n">NODE_BOUNDARY</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="nl">NODE_Dirichlet</span><span class="p">:</span>
+ <span class="p">...</span>
+ <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="p">...</span><span class="o">:</span>
+ <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../2.-D2Q9-Single-Relexation-Time/" class="btn btn-neutral float-right" title="2. D2Q9 Single Relexation Time">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../../models/shallowwater/sw/" class="btn btn-neutral" title="Sw"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../../models/shallowwater/sw/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../2.-D2Q9-Single-Relexation-Time/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../../search/require.js"></script>
+      <script src="../../../search/search.js"></script>
+
+</body>
+</html>

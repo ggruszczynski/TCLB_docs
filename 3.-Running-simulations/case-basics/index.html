@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Lukasz Laniewski-Wollk">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Case Basics - TCLB Reference Manual</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Case Basics";
+    var mkdocs_page_input_path = "3.-Running-simulations/case-basics.md";
+    var mkdocs_page_url = "/3.-Running-simulations/case-basics/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> TCLB Reference Manual</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Welcome to TCLB</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">1. Getting started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../1.-Getting-started/installation/">Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../1.-Getting-started/running-simulation/">Running calculations</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">2. Installation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../2.-Installation/ESYS-Particle/">ESYS-Particle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../2.-Installation/configuration-options/">Configuration options</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../2.-Installation/dependencies/">Dependencies</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">3. Running simulations</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">Case Basics</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#case-configuration">Case configuration</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#geometry-definition">Geometry definition</a></li>
+        
+            <li><a class="toctree-l4" href="#node-types">Node Types</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../examples/">Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../units/">Units</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../working-remotely/">Working remotely</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">4. Post processing</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../4.-Post-processing/catalyst/">Catalyst</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../4.-Post-processing/paraview/">Paraview</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../4.-Post-processing/particles/">Particles</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">5. Model development</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../5.-Model-development/basics/">Basics</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">XML Reference</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Callbacks/">Callbacks</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Container/">Container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Executions/">Executions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Geometry-Boolean-Operation/">Geometry Boolean Operation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Geometry-Primitive/">Geometry Primitive</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Geometry/">Geometry</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Node-Type-Brush/">Node Type Brush</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Optimization-and-Optimal-Control/">Optimization and Optimal Control</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Params/">Params</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Setup-Elements/">Setup Elements</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Models</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">PDE</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/PDE/wave/">Wave</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/PDE/wave2d/">Wave2d</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Article</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/article/d3q19_heat_adj_art/">D3q19 heat adj art</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Electrokinetic</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/electrokinetic/d2q9_npe_guo/">D2q9 npe guo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/electrokinetic/d2q9_poison_boltzmann/">D2q9 poison boltzmann</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/experimental/d2q9_diff/">D2q9 diff</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/experimental/d2q9_hb/">D2q9 hb</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/experimental/d2q9_inc/">D2q9 inc</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Flow</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d2q9_SRT/">d2q9 SRT</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d2q9_cumulant/">D2q9 cumulant</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d2q9_les/">D2q9 les</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d2q9_thin_film/">D2q9 thin film</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d3q19/">D3q19</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d3q19_les/">D3q19 les</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d3q27/">D3q27</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D2q9</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d2q9/d2q9/">D2q9</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d2q9/d2q9_BC/">d2q9 BC</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D3q27 cumulant</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant/">D3q27 cumulant</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG/">d3q27 cumulant AVG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_IB/">d3q27 cumulant AVG IB</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_IB_SMAG/">d3q27 cumulant AVG IB SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_SMAG/">d3q27 cumulant AVG SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_IB/">d3q27 cumulant IB</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_IB_SMAG/">d3q27 cumulant IB SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_SMAG/">d3q27 cumulant SMAG</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/experimental/d3q27_BGK/">d3q27 BGK</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/experimental/d3q27_BGK_galcor/">d3q27 BGK galcor</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Qibb</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/qibb/d3q27_cumulant_qibb_small/">D3q27 cumulant qibb small</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Heat</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/heat/d3q19_heat/">D3q19 heat</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/heat/experimental/d2q9_heat/">D2q9 heat</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Moving</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/moving/d2q9_plate/">D2q9 plate</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Multiphase</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/multiphase/d2q9_csf/">D2q9 csf</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/multiphase/d2q9_kuper/">D2q9 kuper</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/multiphase/d2q9_pf/">D2q9 pf</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/multiphase/d2q9_pf_pressureEvolution/">d2q9 pf pressureEvolution</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/multiphase/d3q19_kuper/">D3q19 kuper</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D2q9 pf velocity</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity/">D2q9 pf velocity</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity_GF/">d2q9 pf velocity GF</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity_RT/">d2q9 pf velocity RT</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D3q27 pf velocity</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/d3q27_pf_velocity/d3q27_pf_velocity/">D3q27 pf velocity</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/d3q27_pf_velocity/d3q27_pf_velocity_SC/">d3q27 pf velocity SC</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/experimental/d2q9_lee/">D2q9 lee</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/experimental/d2q9_pp_LBL/">d2q9 pp LBL</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/experimental/d2q9_pp_MCMP/">d2q9 pp MCMP</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Solidification</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/solidification/d2q9_solid/">D2q9 solid</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Nonnewtonian</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/nonnewtonian/d3q27_viscoplastic/">D3q27 viscoplastic</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Optimization</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/optimization/d2q9_adj/">D2q9 adj</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/optimization/d2q9_optimalMixing/">d2q9 optimalMixing</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/optimization/d3q19_heat_adj/">D3q19 heat adj</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/optimization/experimental/d2q9_heat_adj/">D2q9 heat adj</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Shallowwater</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/shallowwater/sw/">Sw</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Model development</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../tutorials/model-development/1.-finite-difference-wave-equation/">1. finite difference wave equation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../tutorials/model-development/2.-D2Q9-Single-Relexation-Time/">2. D2Q9 Single Relexation Time</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../tutorials/model-development/3.-D2Q9-ShanChen-SRT/">3. D2Q9 ShanChen SRT</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Particles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../tutorials/particles/particles-in-pipe/">Particles in pipe</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">TCLB Reference Manual</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>3. Running simulations &raquo;</li>
+        
+      
+    
+    <li>Case Basics</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="case-configuration">Case configuration</h1>
+<p>All case properties(geometry,BCs,model settings, etc.) are specified within XML files. Generally, the structure of the file should look like that:</p>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;CLBConfig&gt;</span>
+        <span class="nt">&lt;Units&gt;</span>
+              <span class="nt">&lt;Params/&gt;</span> <span class="c">&lt;!-- Specify relation between LB and real world units here --&gt;</span>
+        <span class="nt">&lt;/Units&gt;</span>
+        <span class="nt">&lt;Geometry&gt;</span>  <span class="c">&lt;!-- Domain size --&gt;</span> 
+              <span class="c">&lt;!-- Collision type, boundary conditions, creating/importing objects --&gt;</span>
+        <span class="nt">&lt;/Geometry&gt;</span>
+        <span class="nt">&lt;Model&gt;</span>
+              <span class="nt">&lt;Params/&gt;</span> <span class="c">&lt;!-- All parameters like velocity, density, viscosity --&gt;</span>
+        <span class="nt">&lt;/Model&gt;</span>
+        <span class="c">&lt;!-- Callbacks, python/r code --&gt;</span>
+<span class="nt">&lt;/CLBConfig&gt;</span>
+</pre></div>
+
+
+<p>Working example with some sample values is shown below, along with explanation of each lines functionality.</p>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;CLBConfig</span> <span class="na">version=</span><span class="s">&quot;2.0&quot;</span> <span class="na">output=</span><span class="s">&quot;output/test&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Geometry</span> <span class="na">nx=</span><span class="s">&quot;1024&quot;</span> <span class="na">ny=</span><span class="s">&quot;100&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;MRT&gt;&lt;Box/&gt;&lt;/MRT&gt;</span>
+                <span class="nt">&lt;WVelocity</span> <span class="na">name=</span><span class="s">&quot;Inlet&quot;</span><span class="nt">&gt;&lt;Box</span> <span class="na">nx=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;&lt;/WVelocity&gt;</span>
+                <span class="nt">&lt;EPressure&gt;&lt;Box</span> <span class="na">dx=</span><span class="s">&quot;-1&quot;</span><span class="nt">/&gt;&lt;/EPressure&gt;</span>
+                <span class="nt">&lt;Wall</span> <span class="na">mask =</span> <span class="s">&quot;ALL&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;Box</span> <span class="na">ny=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+                        <span class="nt">&lt;Box</span> <span class="na">dy=</span><span class="s">&quot;-1&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;/Wall&gt;</span>
+        <span class="nt">&lt;/Geometry&gt;</span>
+        <span class="nt">&lt;Model&gt;</span>
+                <span class="nt">&lt;Params</span> <span class="na">Velocity-Inlet=</span><span class="s">&quot;0.01&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;Params</span> <span class="na">nu=</span><span class="s">&quot;0.05&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Model&gt;</span>
+        <span class="nt">&lt;Solve</span> <span class="na">Iterations=</span><span class="s">&quot;5000&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;VTK</span> <span class="na">Iterations=</span><span class="s">&quot;50&quot;</span> <span class="na">what =</span> <span class="s">&quot;U,P&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Solve</span> <span class="na">Iterations=</span><span class="s">&quot;1000&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/CLBConfig&gt;</span>
+</pre></div>
+
+
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Functionality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;?xml version="1.0"?&gt;</code></td>
+<td>Header required for all case files.</td>
+</tr>
+<tr>
+<td><code>&lt;CLBConfig output="output/test"&gt;</code></td>
+<td>All configuration settings must be contained within this element, additionally it is possible to specify deisred output path and/or filename prefix here. In example all files will be saved in <code>~TCLB/output</code> folder, with all the filenames begining with <code>test</code> prefix.</td>
+</tr>
+<tr>
+<td><code>&lt;Geometry nx="1024" ny="100"&gt;</code></td>
+<td>Element containing all informations regarding geometry(domain size/shape, whats insinde domain). <code>nx="1024"" ny="100"</code> specifies a domain containing 1024 elements in x-direction and 100 in y-direction. TODO: specyfikacja nx,dx,fx etc.</td>
+</tr>
+<tr>
+<td><code>&lt;MRT&gt;&lt;Box/&gt;&lt;/MRT&gt;</code></td>
+<td><code>MRT</code> is</td>
+</tr>
+<tr>
+<td><code>&lt;WVelocity name="Inlet"&gt;&lt;Box nx="1"/&gt;&lt;/WVelocity&gt;</code></td>
+<td>Creates velocity inlet at western side of the domain(TODO: Orientation), with width equal to 1 element and assignes it name <code>Inlet</code>(usefull for specifying zonal parameters later on).</td>
+</tr>
+<tr>
+<td><code>&lt;EPressure&gt;&lt;Box dx="-1"/&gt;&lt;/EPressure&gt;</code></td>
+<td>Creates pressure outlet at eastern side of the domain, with width equal to to 1 element.</td>
+</tr>
+<tr>
+<td><code>&lt;Wall mask = "ALL"&gt;</code> <br> <code>&lt;Box ny="1"/&gt;</code> <br> <code>&lt;Box dy="-1"/&gt;</code> <br> <code>&lt;/Wall&gt;</code></td>
+<td>Creates <code>wall</code> elements. <code>mask="ALL"</code> tells us that all types(also from other groups) will be overwritten by <code>wall</code> element type, e.g the collision enabled in <code>&lt;MRT&gt;&lt;Box/&gt;&lt;/MRT&gt;</code> will be disabled.</td>
+</tr>
+<tr>
+<td><code>&lt;/Geometry&gt;</code></td>
+<td>Closing tag for <code>&lt;Geometry&gt;</code> element.</td>
+</tr>
+<tr>
+<td><code>&lt;Model&gt;</code></td>
+<td>Element containing all desired model settings(<code>Params</code>)</td>
+</tr>
+<tr>
+<td><code>&lt;Params Velocity-Inlet="0.01"/&gt;</code></td>
+<td>Setting the value of <code>Velocity</code> parameter to 0.01 in <code>Inlet</code> element(specified in Geometry).</td>
+</tr>
+<tr>
+<td><code>&lt;Params nu="0.05"/&gt;</code></td>
+<td>Setting the value of <code>nu</code> parametere to <code>0.05</code>.</td>
+</tr>
+<tr>
+<td><code>&lt;/Model&gt;</code></td>
+<td>Closing tag for <code>&lt;Model&gt;</code> element. The case is initialized after this tag.</td>
+</tr>
+<tr>
+<td><code>&lt;Solve Iterations="5000"/&gt;</code></td>
+<td>Runs 5000 iterations</td>
+</tr>
+<tr>
+<td><code>&lt;VTK Iterations="50"/&gt;</code></td>
+<td>Specifies that next <code>&lt;Solve&gt;</code> element will create an VTK output file every 50 iterations, saving there U and P quantities. By default everything is saved, creating rather large file for bigger cases.</td>
+</tr>
+<tr>
+<td><code>&lt;Solve Iterations="1000"/&gt;</code></td>
+<td>Runs 1000 iterations, creating <code>VTK</code> output every 50 iterations, as specified earlier.</td>
+</tr>
+<tr>
+<td><code>&lt;/CLBConfig&gt;</code></td>
+<td>Closing tag for <code>&lt;CLBConfig&gt;</code> element, finishing whole case file.</td>
+</tr>
+</tbody>
+</table>
+<p>All case files start with <code>&lt;?xml version="1.0"?&gt;</code> header.</p>
+<p>The configuration must be in the <code>&lt;CLBConfig&gt;</code> element(<code>&lt;CLBConfig/&gt;</code> at start and <code>&lt;/CLBConfig&gt;</code> at the end). In this element the output path and/or prefix can be specified. In example above all files will be saved in <code>~TCLB/output</code> folder, with all the filenames begining with <code>test</code> prefix.</p>
+<p><code>&lt;Geometry&gt;</code> element contains the definition of the domain and objects within it</p>
+<h2 id="geometry-definition">Geometry definition</h2>
+<p>It's easy to imagine how the geometry elements are defined, by thinking about it as "painting". Each geometry element must have 2 parameters "what are we painting with" and "where are we painting":</p>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;Wall</span> <span class="na">mask=</span><span class="s">&quot;ALL&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Box</span> <span class="na">dx=</span><span class="s">&quot;4&quot;</span> <span class="na">nx=</span><span class="s">&quot;10&quot;</span> <span class="na">ny=</span><span class="s">&quot;30&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/Wall&gt;</span>
+</pre></div>
+
+
+<p>In this example "what" is <code>Wall</code> element and "where" is <code>&lt;Box dx="4" nx="10" ny="30"/&gt;</code>. Defining "where" can be done in multiple ways, using <code>nx</code>,<code>dx</code>,<code>fx</code> arguments(similarly for <code>y</code> and <code>z</code>). To understand the geometry definition, you have to know that <code>box</code> element by default spans the whole available space. Then by imposing <code>dx</code>, <code>nx</code> and <code>fx</code> attributes you cut it smaller. <code>dx</code> sets where the box starts, <code>nx</code> sets how <em>long</em> is the box in the x direction, and <code>fx</code> sets where it ends. Additionally, if you set a negative value it means a value <em>from the end</em>. The same applies of course to <code>y</code> and <code>z</code>. For example:</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Region</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;Box nx="1"/&gt;</code></td>
+<td>Left border of the domain</td>
+</tr>
+<tr>
+<td><code>&lt;Box dx="-1"/&gt;</code></td>
+<td>Right border of the domain</td>
+</tr>
+<tr>
+<td><code>&lt;Box dx="10"/&gt;</code></td>
+<td>Everything starting from the 11th element (in x direction)</td>
+</tr>
+<tr>
+<td><code>&lt;Box dx="-10"/&gt;</code></td>
+<td>10 last layers in the x direction</td>
+</tr>
+<tr>
+<td><code>&lt;Box nx="10" ny="10"/&gt;</code></td>
+<td>Square 10x10 in the left bottom corner</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Geometry constrain</th>
+<th>XML Element</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="box dx" src="../images/box_dx.png" /></td>
+<td><code>&lt;Box dx="4"/&gt;</code></td>
+</tr>
+<tr>
+<td><img alt="box dx" src="../images/box_mdx.png" /></td>
+<td><code>&lt;Box dx="-4"/&gt;</code></td>
+</tr>
+<tr>
+<td><img alt="box dx" src="../images/box_nx.png" /></td>
+<td><code>&lt;Box dx="4" nx="10"/&gt;</code></td>
+</tr>
+<tr>
+<td><img alt="box dx" src="../images/box_fx.png" /></td>
+<td><code>&lt;Box dx="4" fx="10"/&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="possible-geometry-primitives">Possible geometry primitives</h3>
+<p><code>Box</code> Creates a box with corners defined by <code>nx</code>/<code>dx</code>/<code>fx</code> etc. parameters.</p>
+<p><code>Wedge</code> Creates a wedge within a <code>box</code>, additionally <code>direction</code> must be specified ("LowerRight", "LowerLeft", "UpperRight", "UpperLeft") e.g: <code>&lt;Wedge dx="4" fx="10" dy="1" ny="10" direction="LowerRight"/&gt;</code></p>
+<p><code>Sphere</code> Creates a sphere within a <code>box</code>, can have different dimensions in x/y/z.</p>
+<h2 id="node-types">Node Types</h2>
+<p>Node type consists of several properties, which are organized in groups. Each node can have noly one property from each group. Additional groups can be</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../examples/" class="btn btn-neutral float-right" title="Examples">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../2.-Installation/dependencies/" class="btn btn-neutral" title="Dependencies"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../2.-Installation/dependencies/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../examples/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

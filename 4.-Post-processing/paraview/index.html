@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Lukasz Laniewski-Wollk">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Analyzing Results with ParaView - TCLB Reference Manual</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Analyzing Results with ParaView";
+    var mkdocs_page_input_path = "4.-Post-processing/paraview.md";
+    var mkdocs_page_url = "/4.-Post-processing/paraview/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> TCLB Reference Manual</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Welcome to TCLB</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">1. Getting started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../1.-Getting-started/installation/">Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../1.-Getting-started/running-simulation/">Running calculations</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">2. Installation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../2.-Installation/ESYS-Particle/">ESYS-Particle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../2.-Installation/configuration-options/">Configuration options</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../2.-Installation/dependencies/">Dependencies</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">3. Running simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../3.-Running-simulations/case-basics/">Case Basics</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../3.-Running-simulations/examples/">Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../3.-Running-simulations/units/">Units</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../3.-Running-simulations/working-remotely/">Working on a remote host</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">4. Post processing</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../catalyst/">Catalyst</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Analyzing Results with ParaView</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#loading-file">Loading file</a></li>
+    
+
+    <li class="toctree-l3"><a href="#changing-display-options">Changing display options</a></li>
+    
+
+    <li class="toctree-l3"><a href="#q-criterion">Q-Criterion</a></li>
+    
+
+    <li class="toctree-l3"><a href="#threshold">Threshold</a></li>
+    
+
+    <li class="toctree-l3"><a href="#plot-over-line">Plot Over line</a></li>
+    
+
+    <li class="toctree-l3"><a href="#viewing-stl-geometry">Viewing STL geometry</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../particles/">Particles</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">5. Model development</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../5.-Model-development/basics/">Basics</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">XML Reference</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Callbacks/">Callbacks</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Container/">Container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Executions/">Executions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Geometry-Boolean-Operation/">Geometry Boolean Operation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Geometry-Primitive/">Geometry Primitive</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Geometry/">Geometry</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Node-Type-Brush/">Node Type Brush</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Optimization-and-Optimal-Control/">Optimization and Optimal Control</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Params/">Params</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Setup-Elements/">Setup Elements</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Models</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">PDE</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/PDE/wave/">Wave</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/PDE/wave2d/">Wave2d</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Article</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/article/d3q19_heat_adj_art/">D3q19 heat adj art</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Electrokinetic</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/electrokinetic/d2q9_npe_guo/">D2q9 npe guo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/electrokinetic/d2q9_poison_boltzmann/">D2q9 poison boltzmann</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/experimental/d2q9_diff/">D2q9 diff</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/experimental/d2q9_hb/">D2q9 hb</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/experimental/d2q9_inc/">D2q9 inc</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Flow</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d2q9_SRT/">d2q9 SRT</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d2q9_cumulant/">D2q9 cumulant</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d2q9_les/">D2q9 les</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d2q9_thin_film/">D2q9 thin film</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d3q19/">D3q19</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d3q19_les/">D3q19 les</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d3q27/">D3q27</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D2q9</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d2q9/d2q9/">D2q9</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d2q9/d2q9_BC/">d2q9 BC</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D3q27 cumulant</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant/">D3q27 cumulant</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG/">d3q27 cumulant AVG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_IB/">d3q27 cumulant AVG IB</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_IB_SMAG/">d3q27 cumulant AVG IB SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_SMAG/">d3q27 cumulant AVG SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_IB/">d3q27 cumulant IB</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_IB_SMAG/">d3q27 cumulant IB SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_SMAG/">d3q27 cumulant SMAG</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/experimental/d3q27_BGK/">d3q27 BGK</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/experimental/d3q27_BGK_galcor/">d3q27 BGK galcor</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Qibb</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/qibb/d3q27_cumulant_qibb_small/">D3q27 cumulant qibb small</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Heat</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/heat/d3q19_heat/">D3q19 heat</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/heat/experimental/d2q9_heat/">D2q9 heat</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Moving</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/moving/d2q9_plate/">D2q9 plate</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Multiphase</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/multiphase/d2q9_csf/">D2q9 csf</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/multiphase/d2q9_kuper/">D2q9 kuper</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/multiphase/d2q9_pf/">D2q9 pf</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/multiphase/d2q9_pf_pressureEvolution/">d2q9 pf pressureEvolution</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/multiphase/d3q19_kuper/">D3q19 kuper</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D2q9 pf velocity</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity/">D2q9 pf velocity</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity_GF/">d2q9 pf velocity GF</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity_RT/">d2q9 pf velocity RT</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D3q27 pf velocity</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/d3q27_pf_velocity/d3q27_pf_velocity/">D3q27 pf velocity</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/d3q27_pf_velocity/d3q27_pf_velocity_SC/">d3q27 pf velocity SC</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/experimental/d2q9_lee/">D2q9 lee</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/experimental/d2q9_pp_LBL/">d2q9 pp LBL</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/experimental/d2q9_pp_MCMP/">d2q9 pp MCMP</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Solidification</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/solidification/d2q9_solid/">D2q9 solid</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Nonnewtonian</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/nonnewtonian/d3q27_viscoplastic/">D3q27 viscoplastic</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Optimization</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/optimization/d2q9_adj/">D2q9 adj</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/optimization/d2q9_optimalMixing/">d2q9 optimalMixing</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/optimization/d3q19_heat_adj/">D3q19 heat adj</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/optimization/experimental/d2q9_heat_adj/">D2q9 heat adj</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Shallowwater</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/shallowwater/sw/">Sw</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Model development</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../tutorials/model-development/1.-finite-difference-wave-equation/">1. finite difference wave equation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../tutorials/model-development/2.-D2Q9-Single-Relexation-Time/">2. D2Q9 Single Relexation Time</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../tutorials/model-development/3.-D2Q9-ShanChen-SRT/">3. D2Q9 ShanChen SRT</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Particles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../tutorials/particles/particles-in-pipe/">Particles in pipe</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">TCLB Reference Manual</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>4. Post processing &raquo;</li>
+        
+      
+    
+    <li>Analyzing Results with ParaView</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>Results of the calculations can be analyzed using <a href="https://www.paraview.org/">ParaView</a>, an open-source, multi-platform data analysis and visualization application. It can be easily installed by running </p>
+<div class="codehilite"><pre><span></span>sudo apt-get install paraview
+</pre></div>
+
+
+<p>Or, if you want to install newer version, it can be downloaded <a href="https://www.paraview.org/download/">here</a>.</p>
+<p>Paraview can open most of the files generated by the TCLB solver(<code>.pvti</code>,<code>.csv</code>) or required to run calculations(<code>.stl</code>). </p>
+<table>
+<thead>
+<tr>
+<th>File extension</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.vti</code></td>
+<td>VTK files generated by the <code>&lt;VTK&gt;</code> callback in <code>.xml</code> case files. Each solver thread creates its own <code>.vti</code> file when saving them. That's why (usually) you do not want to open files with this extension.</td>
+</tr>
+<tr>
+<td><strong><code>.pvti</code></strong></td>
+<td>Files linking separate <code>.vti</code> files, opening them will allow navigation through whole domain/time.</td>
+</tr>
+<tr>
+<td><code>.csv</code></td>
+<td>Log files generated by the <code>&lt;Log&gt;</code> callback in <code>.xml</code> case files. Containing all the values of Settings and Globals defined in <code>Dynamics.R</code> TODO:podlinkować</td>
+</tr>
+<tr>
+<td><code>.xml</code></td>
+<td>Configuration files, containing <code>.xml</code> case file and information about code version/compilation settings.</td>
+</tr>
+<tr>
+<td><code>.stl</code></td>
+<td>Geometry files.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="loading-file">Loading file</h2>
+<p>ParaView can be started either from the start menu or the terminal. When using the latter it is possible to specify which file should be opened:</p>
+<div class="codehilite"><pre><span></span>paraview output/d2q9_poiseuille_VTK_P00_..pvti
+</pre></div>
+
+
+<p>File(s) can be opened by right clicking on icon in the left-top corner or using <code>ctrl+o</code>, to choose multiple files hold <code>ctrl</code> while picking. After chosing the file, click <code>Apply</code> in the properties menu to load it. It is possible to chose at this point which data to load, which is especially usefull when analysing bigger cases. </p>
+<p><center> <img alt="" src="../images/paraview_1.png" /> </center></p>
+<p>Note: What is displayed here depends on what is defined in Dynamics.R</p>
+<h2 id="changing-display-options">Changing display options</h2>
+<p>After loading file you will see only the outline of the domain, as this is the default display option and default displayed data is 'Solid Color'. You can change it by choosing another option from the list.Let's try viewing pressure in the middle of the domain - to do this we need to switch display option to <code>Slice</code> and displayed data to <code>P</code>. (see images below)</p>
+<p><center> <img alt="" src="../images/paraview_2.png" /> </center></p>
+<p><center> <img alt="" src="../images/paraview_3.png" /> </center></p>
+<p>After that it should look like this:
+<center> <img alt="" src="../images/paraview_4.png" /> </center></p>
+<p>Notice how the presented colours are only on the one side of the spectrum. Spectrum can be rescaled either automatically to data range, or by manually providing the values.</p>
+<p><center> <img alt="" src="../images/paraview_5.png" /> </center> TODO: moze opisać który to który</p>
+<p>It is possible that sometimes the automatic rescaling is not working as expected, it is usually caused by elements inside/near inlet/outlet which have  enourmously high/low values. The same case after rescaling:</p>
+<p><center> <img alt="" src="../images/paraview_6.png" /> </center></p>
+<p>Using the <code>Slice</code> display option we can choose where to slice in the <code>Properties</code> menu:</p>
+<p><center> <img alt="" src="../images/paraview_7.png" /> </center></p>
+<h2 id="q-criterion">Q-Criterion</h2>
+<p>Find <code>Gradient Of Unstructured DataSet</code> in <code>Filters</code> menu( or use built in search function - <code>ctrl+spacebar</code>). Chose velocity array(<code>U</code>) as <code>Scalar Array</code> in <code>Properties</code> menu and mark the box labeled <code>Compute QCriterion</code>. You will now be able to display calculated <code>Q-criterion</code> by switching displayed array.
+<center> <img alt="" src="../images/paraview_8.png" />  <img alt="" src="../images/paraview_9.png" /> </center></p>
+<h2 id="threshold">Threshold</h2>
+<p>Find (<code>ctrl+spacebar</code>) <code>Threshold</code> function, then pick which values will be checked. For example, to separate studied object from the rest of the flow pick <code>BOUNDARY</code>(it's equal to 1 for <code>Wall</code> nodes and 0 for flow nodes). </p>
+<p><center> <img alt="" src="../images/paraview_10.png" />  <img alt="" src="../images/paraview_11.png" /> </center></p>
+<p>If you want to get rid of the walls you can use <code>Extract  Subset</code> filter to pick a portion of domain without walls and apply threshold later.</p>
+<p><center> <img alt="" src="../images/paraview_12.png" /> </center></p>
+<h2 id="plot-over-line">Plot Over line</h2>
+<p>After picking <code>Plot Over Line</code> filter you can either specify the end points in <code>Properties</code> menu or manipulute them using mouse. </p>
+<p><center> <img alt="" src="../images/paraview_13.png" /> </center></p>
+<p>After clicking <code>Apply</code> a new window will open with the plot. You can choose wchich variables to use in <code>Properties</code> menu(along other options).</p>
+<p><center> <img alt="" src="../images/paraview_14.png" /> </center></p>
+<h2 id="viewing-stl-geometry">Viewing STL geometry</h2>
+<p>You can use ParaView to view <code>.stl</code> files. This comes in handy when  you need to import <code>.stl</code> geometry in your case, but don't know which parameters to use. By loading <code>.stl</code> along with you generated domain(in <code>.pvti</code> file) <code>.stl</code> geometry can be quickly fitted to your domain. For this purpose use <code>Transforming</code> in <code>Properties</code> menu. The same values should work while loading <code>.stl</code> in <code>.xml</code> file.</p>
+<p><center> <img alt="" src="../images/paraview_15.png" /> </center></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../particles/" class="btn btn-neutral float-right" title="Particles">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../catalyst/" class="btn btn-neutral" title="Catalyst"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../catalyst/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../particles/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

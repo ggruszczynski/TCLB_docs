@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Lukasz Laniewski-Wollk">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Examples - TCLB Reference Manual</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Examples";
+    var mkdocs_page_input_path = "3.-Running-simulations/examples.md";
+    var mkdocs_page_url = "/3.-Running-simulations/examples/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> TCLB Reference Manual</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Welcome to TCLB</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">1. Getting started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../1.-Getting-started/installation/">Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../1.-Getting-started/running-simulation/">Running calculations</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">2. Installation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../2.-Installation/ESYS-Particle/">ESYS-Particle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../2.-Installation/configuration-options/">Configuration options</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../2.-Installation/dependencies/">Dependencies</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">3. Running simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../case-basics/">Case Basics</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Examples</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#example-cases">Example cases</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#simple-case">Simple case</a></li>
+        
+            <li><a class="toctree-l4" href="#defining-units">Defining Units</a></li>
+        
+            <li><a class="toctree-l4" href="#control-elements">Control elements</a></li>
+        
+            <li><a class="toctree-l4" href="#importing-geometry">Importing geometry</a></li>
+        
+            <li><a class="toctree-l4" href="#symmetry">Symmetry</a></li>
+        
+            <li><a class="toctree-l4" href="#synthetic-turbulence">Synthetic Turbulence</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../units/">Units</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../working-remotely/">Working remotely</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">4. Post processing</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../4.-Post-processing/catalyst/">Catalyst</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../4.-Post-processing/paraview/">Paraview</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../4.-Post-processing/particles/">Particles</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">5. Model development</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../5.-Model-development/basics/">Basics</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">XML Reference</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Callbacks/">Callbacks</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Container/">Container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Executions/">Executions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Geometry-Boolean-Operation/">Geometry Boolean Operation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Geometry-Primitive/">Geometry Primitive</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Geometry/">Geometry</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Node-Type-Brush/">Node Type Brush</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Optimization-and-Optimal-Control/">Optimization and Optimal Control</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Params/">Params</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Setup-Elements/">Setup Elements</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Models</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">PDE</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/PDE/wave/">Wave</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/PDE/wave2d/">Wave2d</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Article</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/article/d3q19_heat_adj_art/">D3q19 heat adj art</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Electrokinetic</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/electrokinetic/d2q9_npe_guo/">D2q9 npe guo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/electrokinetic/d2q9_poison_boltzmann/">D2q9 poison boltzmann</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/experimental/d2q9_diff/">D2q9 diff</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/experimental/d2q9_hb/">D2q9 hb</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/experimental/d2q9_inc/">D2q9 inc</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Flow</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d2q9_SRT/">d2q9 SRT</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d2q9_cumulant/">D2q9 cumulant</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d2q9_les/">D2q9 les</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d2q9_thin_film/">D2q9 thin film</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d3q19/">D3q19</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d3q19_les/">D3q19 les</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d3q27/">D3q27</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D2q9</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d2q9/d2q9/">D2q9</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d2q9/d2q9_BC/">d2q9 BC</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D3q27 cumulant</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant/">D3q27 cumulant</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG/">d3q27 cumulant AVG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_IB/">d3q27 cumulant AVG IB</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_IB_SMAG/">d3q27 cumulant AVG IB SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_SMAG/">d3q27 cumulant AVG SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_IB/">d3q27 cumulant IB</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_IB_SMAG/">d3q27 cumulant IB SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_SMAG/">d3q27 cumulant SMAG</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/experimental/d3q27_BGK/">d3q27 BGK</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/experimental/d3q27_BGK_galcor/">d3q27 BGK galcor</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Qibb</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/qibb/d3q27_cumulant_qibb_small/">D3q27 cumulant qibb small</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Heat</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/heat/d3q19_heat/">D3q19 heat</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/heat/experimental/d2q9_heat/">D2q9 heat</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Moving</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/moving/d2q9_plate/">D2q9 plate</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Multiphase</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/multiphase/d2q9_csf/">D2q9 csf</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/multiphase/d2q9_kuper/">D2q9 kuper</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/multiphase/d2q9_pf/">D2q9 pf</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/multiphase/d2q9_pf_pressureEvolution/">d2q9 pf pressureEvolution</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/multiphase/d3q19_kuper/">D3q19 kuper</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D2q9 pf velocity</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity/">D2q9 pf velocity</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity_GF/">d2q9 pf velocity GF</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity_RT/">d2q9 pf velocity RT</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D3q27 pf velocity</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/d3q27_pf_velocity/d3q27_pf_velocity/">D3q27 pf velocity</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/d3q27_pf_velocity/d3q27_pf_velocity_SC/">d3q27 pf velocity SC</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/experimental/d2q9_lee/">D2q9 lee</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/experimental/d2q9_pp_LBL/">d2q9 pp LBL</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/experimental/d2q9_pp_MCMP/">d2q9 pp MCMP</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Solidification</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/solidification/d2q9_solid/">D2q9 solid</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Nonnewtonian</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/nonnewtonian/d3q27_viscoplastic/">D3q27 viscoplastic</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Optimization</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/optimization/d2q9_adj/">D2q9 adj</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/optimization/d2q9_optimalMixing/">d2q9 optimalMixing</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/optimization/d3q19_heat_adj/">D3q19 heat adj</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/optimization/experimental/d2q9_heat_adj/">D2q9 heat adj</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Shallowwater</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/shallowwater/sw/">Sw</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Model development</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../tutorials/model-development/1.-finite-difference-wave-equation/">1. finite difference wave equation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../tutorials/model-development/2.-D2Q9-Single-Relexation-Time/">2. D2Q9 Single Relexation Time</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../tutorials/model-development/3.-D2Q9-ShanChen-SRT/">3. D2Q9 ShanChen SRT</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Particles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../tutorials/particles/particles-in-pipe/">Particles in pipe</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">TCLB Reference Manual</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>3. Running simulations &raquo;</li>
+        
+      
+    
+    <li>Examples</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="example-cases">Example cases</h1>
+<p>In this section, a few case files will be presented, along with notes on their structure and usage of most popular functions. All of them(and some others) can be found in <code>TCLB/examples</code> catalogue(TODO: powrzucać te przykłady).</p>
+<h2 id="simple-case">Simple case</h2>
+<p>Below is presented a simple 3-Dimensional case, with a ball in the middle of the domain. Velocity inlet is used on one side and pressure outlet on the another one(TODO:Orientacja NEWS). Notice how each dimension of the ball is specified in different way, yet it is still placed exactly in the middle of the domain:</p>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;CLBConfig</span> <span class="na">version=</span><span class="s">&quot;2.0&quot;</span> <span class="na">output=</span><span class="s">&quot;output/test&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Geometry</span> <span class="na">nx=</span><span class="s">&quot;128&quot;</span> <span class="na">ny=</span><span class="s">&quot;128&quot;</span> <span class="na">nz=</span><span class="s">&quot;128&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;MRT&gt;&lt;Box/&gt;&lt;/MRT&gt;</span>
+        <span class="nt">&lt;WVelocity</span> <span class="na">name=</span><span class="s">&quot;Inlet&quot;</span><span class="nt">&gt;&lt;Box</span> <span class="na">nx=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;&lt;/WVelocity&gt;</span>
+        <span class="nt">&lt;EPressure&gt;&lt;Box</span> <span class="na">dx=</span><span class="s">&quot;-1&quot;</span><span class="nt">/&gt;&lt;/EPressure&gt;</span>
+        <span class="nt">&lt;Wall</span> <span class="na">mask =</span> <span class="s">&quot;ALL&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Sphere</span> <span class="na">dx=</span><span class="s">&quot;54&quot;</span> <span class="na">nx=</span><span class="s">&quot;20&quot;</span> <span class="na">dy=</span><span class="s">&quot;54&quot;</span> <span class="na">fy=</span><span class="s">&quot;74&quot;</span> <span class="na">dz=</span><span class="s">&quot;-74&quot;</span> <span class="na">nz=</span><span class="s">&quot;20&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Wall&gt;</span>
+    <span class="nt">&lt;/Geometry&gt;</span>
+    <span class="nt">&lt;Model&gt;</span>
+        <span class="nt">&lt;Params</span> <span class="na">Velocity-Inlet=</span><span class="s">&quot;0.1&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Params</span> <span class="na">nu=</span><span class="s">&quot;0.05&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Model&gt;</span>
+    <span class="nt">&lt;VTK</span> <span class="na">Iterations=</span><span class="s">&quot;100&quot;</span> <span class="na">what =</span> <span class="s">&quot;U,P&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Solve</span> <span class="na">Iterations=</span><span class="s">&quot;1000&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/CLBConfig&gt;</span>
+</pre></div>
+
+
+<p>Note: It is not necessary to specify <code>&lt;Box nx="1"&gt;</code> for Inlet/Outlet, as it is default value. </p>
+<h2 id="defining-units">Defining Units</h2>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;CLBConfig</span> <span class="na">version=</span><span class="s">&quot;2.0&quot;</span> <span class="na">output=</span><span class="s">&quot;output/test&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Units&gt;</span>
+        <span class="nt">&lt;Params</span> <span class="na">Velocity=</span><span class="s">&quot;1m/s&quot;</span> <span class="na">gauge=</span><span class="s">&quot;0.1&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Params</span> <span class="na">Viscosity=</span><span class="s">&quot;0.01m2/s&quot;</span> <span class="na">gauge=</span><span class="s">&quot;0.01&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Units&gt;</span>
+    <span class="nt">&lt;Geometry</span> <span class="na">nx=</span><span class="s">&quot;12.8m&quot;</span> <span class="na">ny=</span><span class="s">&quot;12.8m&quot;</span> <span class="na">nz=</span><span class="s">&quot;12.8m&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;MRT&gt;&lt;Box/&gt;&lt;/MRT&gt;</span>
+        <span class="nt">&lt;WVelocity</span> <span class="na">name=</span><span class="s">&quot;Inlet&quot;</span><span class="nt">&gt;&lt;Box</span> <span class="na">nx=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;&lt;/WVelocity&gt;</span>
+        <span class="nt">&lt;EPressure&gt;&lt;Box</span> <span class="na">dx=</span><span class="s">&quot;-1&quot;</span><span class="nt">/&gt;&lt;/EPressure&gt;</span>
+        <span class="nt">&lt;Wall</span> <span class="na">mask =</span> <span class="s">&quot;ALL&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Sphere</span> <span class="na">dx=</span><span class="s">&quot;54&quot;</span> <span class="na">nx=</span><span class="s">&quot;20&quot;</span> <span class="na">dy=</span><span class="s">&quot;54&quot;</span> <span class="na">fy=</span><span class="s">&quot;74&quot;</span> <span class="na">dz=</span><span class="s">&quot;-74&quot;</span> <span class="na">nz=</span><span class="s">&quot;20&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Wall&gt;</span>
+    <span class="nt">&lt;/Geometry&gt;</span>
+    <span class="nt">&lt;Model&gt;</span>
+        <span class="nt">&lt;Params</span> <span class="na">Velocity-Inlet=</span><span class="s">&quot;1m/s&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Params</span> <span class="na">nu=</span><span class="s">&quot;0.05m2/s&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Model&gt;</span>
+    <span class="nt">&lt;VTK</span> <span class="na">Iterations=</span><span class="s">&quot;100&quot;</span> <span class="na">what =</span> <span class="s">&quot;U,P&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Solve</span> <span class="na">Iterations=</span><span class="s">&quot;1000&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/CLBConfig&gt;</span>
+</pre></div>
+
+
+<p>Sets units in such a way that real-world units agree with LB units. Here $1m = 1/0.1=10$, which means that each meter is equal to 10 elements in grid and $0.01[\frac{m^2}{s}]  = \frac{0.01}{0.01} = 1 =&gt; 1 Iteration[s] = \frac{1}{10^2}$, so 1 second in real world is equal to 100 iterations. </p>
+<p>Notice how parameters in <code>&lt;Model&gt;</code> and <code>Geometry</code> are specified and how generated case is the same as in previous example.</p>
+<p>It is important not to over-construct gauge variables. If <code>&lt;Params Size="1m" gauge = "10"/&gt;</code> would be added to the example above it would result in an error, as too many gauge gauges would be assigned.</p>
+<h2 id="control-elements">Control elements</h2>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;CLBConfig</span> <span class="na">version=</span><span class="s">&quot;2.0&quot;</span> <span class="na">output=</span><span class="s">&quot;output/test&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Geometry</span> <span class="na">nx=</span><span class="s">&quot;128&quot;</span> <span class="na">ny=</span><span class="s">&quot;128&quot;</span> <span class="na">nz=</span><span class="s">&quot;128&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;MRT&gt;&lt;Box/&gt;&lt;/MRT&gt;</span>
+        <span class="nt">&lt;WVelocity</span> <span class="na">name=</span><span class="s">&quot;Inlet&quot;</span><span class="nt">&gt;&lt;Box</span> <span class="na">nx=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;&lt;/WVelocity&gt;</span>
+        <span class="nt">&lt;EPressure&gt;&lt;Box</span> <span class="na">dx=</span><span class="s">&quot;-1&quot;</span><span class="nt">/&gt;&lt;/EPressure&gt;</span>
+        <span class="nt">&lt;Wall</span> <span class="na">mask =</span> <span class="s">&quot;ALL&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Sphere</span> <span class="na">dx=</span><span class="s">&quot;54&quot;</span> <span class="na">nx=</span><span class="s">&quot;20&quot;</span> <span class="na">dy=</span><span class="s">&quot;54&quot;</span> <span class="na">fy=</span><span class="s">&quot;74&quot;</span> <span class="na">dz=</span><span class="s">&quot;-74&quot;</span> <span class="na">nz=</span><span class="s">&quot;20&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Wall&gt;</span>
+    <span class="nt">&lt;/Geometry&gt;</span>
+    <span class="nt">&lt;Model&gt;</span>
+        <span class="nt">&lt;Params</span> <span class="na">Velocity-Inlet=</span><span class="s">&quot;0.1&quot;</span>
+                <span class="na">nu=</span><span class="s">&quot;0.05&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Model&gt;</span>
+    <span class="nt">&lt;VTK</span> <span class="na">Iterations=</span><span class="s">&quot;100&quot;</span> <span class="na">what =</span> <span class="s">&quot;U,P&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Solve</span> <span class="na">Iterations=</span><span class="s">&quot;1000&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Control</span> <span class="na">Iterations=</span><span class="s">&quot;1000&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;CSV</span> <span class="na">file=</span><span class="s">&quot;file.csv&quot;</span> <span class="na">Time=</span><span class="s">&quot;x*1000&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Params</span> <span class="na">Velocity=</span><span class="s">&quot;y*0.02+0.05&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/CSV&gt;</span>
+<span class="nt">&lt;/Control&gt;</span>
+<span class="nt">&lt;/CLBConfig&gt;</span>
+</pre></div>
+
+
+<p>Changes <code>Velocity</code> according to the contents of <code>file.csv</code>. Here column 'x' is used to compute time and 'y' is used to calculate 'Velocity' value. Notice also that <code>Velocity</code> and <code>nu</code> parameters are given in <code>&lt;Model&gt;</code> container, without the need of creating separate tags for each parameter.</p>
+<h2 id="importing-geometry">Importing geometry</h2>
+<p>It is possible to import geometry from <code>.stl</code> files. It can be done by using <code>&lt;STL file="path_to_file"/&gt;</code>. Additional arguments allow user to resize, rotate, and translate geometry. ParaView(TODO: podlinkować odpowiedni podrozdział) can open <code>.stl</code> files and provides a fast way of estabilishing correct import parameters. Imported geometry can be used along with geometry primitives, shown in other examples.</p>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;CLBConfig</span> <span class="na">version=</span><span class="s">&quot;2.0&quot;</span> <span class="na">output=</span><span class="s">&quot;output/&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Units&gt;</span>
+                <span class="nt">&lt;Params</span> <span class="na">size=</span><span class="s">&quot;1m&quot;</span> <span class="na">gauge=</span><span class="s">&quot;70&quot;</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;Params</span> <span class="na">nu=</span><span class="s">&quot;1.4e-5m2/s&quot;</span> <span class="na">gauge=</span><span class="s">&quot;0.0001&quot;</span><span class="nt">/&gt;</span>  (TODO: nie działa jak usunie wpisze się w jednym <span class="nt">&lt;Params/&gt;</span> - dlaczego?)
+        <span class="nt">&lt;/Units&gt;</span>
+        <span class="nt">&lt;Geometry</span> <span class="na">nx=</span><span class="s">&quot;6m&quot;</span> <span class="na">ny=</span><span class="s">&quot;1m&quot;</span> <span class="na">nz=</span><span class="s">&quot;1m&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;MRT&gt;&lt;Box/&gt;&lt;/MRT&gt;</span>
+                <span class="nt">&lt;WVelocity&gt;&lt;Inlet/&gt;&lt;/WVelocity&gt;</span>
+                <span class="nt">&lt;EPressure&gt;&lt;Outlet/&gt;&lt;/EPressure&gt;</span>
+                <span class="nt">&lt;Wall</span> <span class="na">mask=</span><span class="s">&quot;ALL&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;Channel/&gt;</span>
+                        <span class="nt">&lt;STL</span> <span class="na">file=</span><span class="s">&quot;example/data/ahmed.stl&quot;</span> <span class="na">scale=</span><span class="s">&quot;1mm&quot;</span> <span class="na">Xrot=</span><span class="s">&quot;-90d&quot;</span> <span class="na">x=</span><span class="s">&quot;70&quot;</span> <span class="na">y=</span><span class="s">&quot;5cm&quot;</span> <span class="na">z=</span><span class="s">&quot;0.5m&quot;</span> <span class="na">side =</span> <span class="s">&quot;out&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;/Wall&gt;</span>
+        <span class="nt">&lt;/Geometry&gt;</span>
+        <span class="nt">&lt;Model&gt;</span>
+                <span class="nt">&lt;Params</span> <span class="na">Velocity=</span><span class="s">&quot;0.01&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Model&gt;</span>
+        <span class="nt">&lt;VTK</span> <span class="na">Iterations=</span><span class="s">&quot;1000&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Solve</span> <span class="na">Iterations=</span><span class="s">&quot;10000&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/CLBConfig&gt;</span>
+</pre></div>
+
+
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scale</code></td>
+<td>Used to resize <code>.stl</code> file, can be specified with units, or as a fraction(e.g. 1/100).</td>
+</tr>
+<tr>
+<td><code>Xrot,Yrot,Zrot</code></td>
+<td>Rotates geometry aroun X/Y/Z axis by given amount in degrees.</td>
+</tr>
+<tr>
+<td><code>x,y,z</code></td>
+<td>Translates geometry along X/Y/Z axis  by given amount.  Distance can be specified in real-world units or number of grid points(without unit).</td>
+</tr>
+<tr>
+<td><code>side</code></td>
+<td>Chose if geometry will be treated as wall, possible arguments: <code>"in"</code>,<code>"out"</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="symmetry">Symmetry</h2>
+<p>TODO:ustalić jak było z przesunięciem przy symetri, czy ma ona być na ostatnim elemencie ciała czy jedno za nim. </p>
+<h2 id="synthetic-turbulence">Synthetic Turbulence</h2>
+<p>A synthetic turbulence generator is implemented in TCLB solver. It is based on modified von Karman-Pao spectrum(<a href="https://arc.aiaa.org/doi/10.2514/6.1999-1872">Bailly and Juve, 1999</a>) </p>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;CLBConfig</span> <span class="na">version=</span><span class="s">&quot;2.0&quot;</span> <span class="na">output=</span><span class="s">&quot;output/test&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Units&gt;</span>
+        <span class="nt">&lt;Params</span> <span class="na">Velocity=</span><span class="s">&quot;1m/s&quot;</span> <span class="na">gauge=</span><span class="s">&quot;0.1&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Params</span> <span class="na">Viscosity=</span><span class="s">&quot;0.01m2/s&quot;</span> <span class="na">gauge=</span><span class="s">&quot;0.01&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Units&gt;</span>
+    <span class="nt">&lt;Geometry</span> <span class="na">nx=</span><span class="s">&quot;128&quot;</span> <span class="na">ny=</span><span class="s">&quot;128&quot;</span> <span class="na">nz=</span><span class="s">&quot;128&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;MRT&gt;&lt;Box/&gt;&lt;/MRT&gt;</span>
+        <span class="nt">&lt;WVelocityTurbulent</span> <span class="na">name=</span><span class="s">&quot;Inlet&quot;</span><span class="nt">&gt;&lt;Box</span> <span class="na">nx=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;&lt;/WVelocityTurbulent&gt;</span>
+        <span class="nt">&lt;EPressure&gt;&lt;Box</span> <span class="na">dx=</span><span class="s">&quot;-1&quot;</span><span class="nt">/&gt;&lt;/EPressure&gt;</span>
+        <span class="nt">&lt;Wall</span> <span class="na">mask =</span> <span class="s">&quot;ALL&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Sphere</span> <span class="na">dx=</span><span class="s">&quot;54&quot;</span> <span class="na">nx=</span><span class="s">&quot;20&quot;</span> <span class="na">dy=</span><span class="s">&quot;54&quot;</span> <span class="na">fy=</span><span class="s">&quot;74&quot;</span> <span class="na">dz=</span><span class="s">&quot;-74&quot;</span> <span class="na">nz=</span><span class="s">&quot;20&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/Wall&gt;</span>
+    <span class="nt">&lt;/Geometry&gt;</span>
+    <span class="nt">&lt;Model&gt;</span>
+        <span class="nt">&lt;Params</span> <span class="na">Velocity-Inlet=</span><span class="s">&quot;1m/s&quot;</span>
+                <span class="na">nu=</span><span class="s">&quot;0.05m2/s&quot;</span>
+                <span class="na">Turbulence=</span><span class="s">&quot;0.1m/s&quot;</span>
+                <span class="na">MainWaveLength=</span><span class="s">&quot;10m&quot;</span>
+                <span class="na">DiffusionWaveLength =</span> <span class="s">&quot;100m&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Model&gt;</span>
+    <span class="nt">&lt;VTK</span> <span class="na">Iterations=</span><span class="s">&quot;100&quot;</span> <span class="na">what =</span> <span class="s">&quot;U,P&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Solve</span> <span class="na">Iterations=</span><span class="s">&quot;1000&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/CLBConfig&gt;</span>
+</pre></div>
+
+
+<p>It is important to remember that in order to use implemented turbulence generator it is required to change <code>WVelocity</code> to <code>WVelocityTurbulent</code>, e.g.: <code>&lt;WVelocityTurbulent&gt;&lt;Box nx="1"/&gt;&lt;/WVelocityTurbulent&gt;</code>. The generator has more customizable attributes, given in table below, but most of them is not required for generator to work. Only the mandatory ones are provided in example above.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Modes</code></td>
+<td>Number of harmonic modes to generate for the turbulence, default '100'.</td>
+</tr>
+<tr>
+<td><code>Spread</code></td>
+<td>The way to divide the spectrum to a finite number of modes. Possible values: <code>Even</code>, <code>Log</code>, <code>Quantile</code>. Default is <code>Even</code>.</td>
+</tr>
+<tr>
+<td><code>Spectrum</code></td>
+<td>Type of spectrum to use, possible values: <code>Von Karman</code>, <code>One Wave</code>. Default is <code>Von Karman</code>.</td>
+</tr>
+<tr>
+<td><code>MainWaveLength</code></td>
+<td>Main wave-length in the Von Karman spectrum.</td>
+</tr>
+<tr>
+<td><code>DiffusionWaveLength</code></td>
+<td>Diffusion scale wave-length in the Von Karman spectrum.</td>
+</tr>
+<tr>
+<td><code>MinWaveLength</code></td>
+<td>Minimal space wave-length. TODO:Default value</td>
+</tr>
+<tr>
+<td><code>MaxWaveLength</code></td>
+<td>Maximal space wave-length.</td>
+</tr>
+<tr>
+<td><code>TimeWaveLength</code></td>
+<td>Time wave-length of the syntetic turbulence.</td>
+</tr>
+</tbody>
+</table>
+<p>It is possible to specify <code>WaveLength</code> parameters in terms of <code>WaveNumber</code> or <code>WaveFrequency</code>. </p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../units/" class="btn btn-neutral float-right" title="Units">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../case-basics/" class="btn btn-neutral" title="Case Basics"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../case-basics/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../units/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

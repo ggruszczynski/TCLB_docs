@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Lukasz Laniewski-Wollk">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>D2Q9 Single Relexation Time (SRT) - TCLB Reference Manual</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "D2Q9 Single Relexation Time (SRT)";
+    var mkdocs_page_input_path = "tutorials/model-development/2.-D2Q9-Single-Relexation-Time.md";
+    var mkdocs_page_url = "/tutorials/model-development/2.-D2Q9-Single-Relexation-Time/";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> TCLB Reference Manual</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../..">Welcome to TCLB</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">1. Getting started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../1.-Getting-started/installation/">Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../1.-Getting-started/running-simulation/">Running calculations</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">2. Installation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../2.-Installation/ESYS-Particle/">ESYS-Particle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../2.-Installation/configuration-options/">Configuration options</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../2.-Installation/dependencies/">Dependencies</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">3. Running simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../3.-Running-simulations/case-basics/">Case Basics</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../3.-Running-simulations/examples/">Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../3.-Running-simulations/units/">Units</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../3.-Running-simulations/working-remotely/">Working on a remote host</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">4. Post processing</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../4.-Post-processing/catalyst/">Catalyst</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../4.-Post-processing/paraview/">Analyzing Results with ParaView</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../4.-Post-processing/particles/">Post-processing of particle data</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">5. Model development</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../5.-Model-development/basics/">Model Information</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">XML Reference</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Callbacks/">Callbacks</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Container/">Container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Executions/">Executions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Geometry-Boolean-Operation/">Geometry Boolean Operation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Geometry-Primitive/">Geometry Primitive</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Geometry/">Geometry</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Node-Type-Brush/">Node Type Brush</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Optimization-and-Optimal-Control/">Optimization and Optimal Control</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Params/">Params</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../XML-Reference/Setup-Elements/">Setup Elements</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Models</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">PDE</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/PDE/wave/">Wave</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/PDE/wave2d/">Wave2d</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Article</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/article/d3q19_heat_adj_art/">D3q19 heat adj art</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Electrokinetic</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/electrokinetic/d2q9_npe_guo/">D2q9 npe guo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/electrokinetic/d2q9_poison_boltzmann/">D2q9 poison boltzmann</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/experimental/d2q9_diff/">D2q9 diff</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/experimental/d2q9_hb/">D2q9 hb</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/experimental/d2q9_inc/">D2q9 inc</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Flow</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d2q9_SRT/">d2q9 SRT</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d2q9_cumulant/">D2q9 cumulant</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d2q9_les/">D2q9 les</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d2q9_thin_film/">D2q9 thin film</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d3q19/">D3q19</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d3q19_les/">D3q19 les</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/flow/d3q27/">D3q27</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D2q9</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d2q9/d2q9/">D2q9</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d2q9/d2q9_BC/">d2q9 BC</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D3q27 cumulant</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant/">D3q27 cumulant</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG/">d3q27 cumulant AVG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_IB/">d3q27 cumulant AVG IB</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_IB_SMAG/">d3q27 cumulant AVG IB SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_SMAG/">d3q27 cumulant AVG SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_IB/">d3q27 cumulant IB</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_IB_SMAG/">d3q27 cumulant IB SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/d3q27_cumulant/d3q27_cumulant_SMAG/">d3q27 cumulant SMAG</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/experimental/d3q27_BGK/">d3q27 BGK</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/experimental/d3q27_BGK_galcor/">d3q27 BGK galcor</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Qibb</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/flow/qibb/d3q27_cumulant_qibb_small/">D3q27 cumulant qibb small</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Heat</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/heat/d3q19_heat/">D3q19 heat</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/heat/experimental/d2q9_heat/">D2q9 heat</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Moving</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/moving/d2q9_plate/">D2q9 plate</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Multiphase</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_csf/">D2q9 csf</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_kuper/">D2q9 kuper</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_pf/">D2q9 pf</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_pf_pressureEvolution/">d2q9 pf pressureEvolution</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/multiphase/d3q19_kuper/">D3q19 kuper</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D2q9 pf velocity</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity/">D2q9 pf velocity</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity_GF/">d2q9 pf velocity GF</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity_RT/">d2q9 pf velocity RT</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D3q27 pf velocity</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/d3q27_pf_velocity/d3q27_pf_velocity/">D3q27 pf velocity</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/d3q27_pf_velocity/d3q27_pf_velocity_SC/">d3q27 pf velocity SC</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/experimental/d2q9_lee/">D2q9 lee</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/experimental/d2q9_pp_LBL/">d2q9 pp LBL</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/experimental/d2q9_pp_MCMP/">d2q9 pp MCMP</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Solidification</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/multiphase/solidification/d2q9_solid/">D2q9 solid</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Nonnewtonian</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/nonnewtonian/d3q27_viscoplastic/">D3q27 viscoplastic</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Optimization</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/optimization/d2q9_adj/">D2q9 adj</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/optimization/d2q9_optimalMixing/">d2q9 optimalMixing</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/optimization/d3q19_heat_adj/">D3q19 heat adj</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../../models/optimization/experimental/d2q9_heat_adj/">D2q9 heat adj</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Shallowwater</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../models/shallowwater/sw/">Sw</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <span class="caption-text">Model development</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../1.-finite-difference-wave-equation/">Finite difference wave equation</a>
+                </li>
+                <li class="toctree-l3 current">
+                    
+    <a class="current" href="./">D2Q9 Single Relexation Time (SRT)</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l4"><a href="#the-srt-lattice-boltzmann-equation">The SRT-lattice Boltzmann Equation</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l5" href="#boundary-conditions-and-force-implementation">Boundary Conditions and Force Implementation</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l4"><a href="#model-creation-in-tclb">Model Creation in TCLB</a></li>
+    
+
+    <li class="toctree-l4"><a href="#setting-up-a-simulation">Setting up a Simulation</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../3.-D2Q9-ShanChen-SRT/">3. D2Q9 ShanChen SRT</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Particles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../particles/particles-in-pipe/">Particles in pipe</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">TCLB Reference Manual</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Tutorials &raquo;</li>
+        
+      
+        
+          <li>Model development &raquo;</li>
+        
+      
+    
+    <li>D2Q9 Single Relexation Time (SRT)</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>This tutorial will try to teach you how to make and use lattice Boltzmann (LB) models within the TCLB environment. First a brief overview will be given of the discrete <a href="https://en.wikipedia.org/wiki/Lattice_Boltzmann_methods">lattice Boltzmann equation</a> taking advantage of the Bhatnagar-Gross-Krook (BGK) collision operator (also known as single relaxation time operator) will be given, then the code required to simulate Poiseuille flow will be developed.</p>
+<h2 id="the-srt-lattice-boltzmann-equation">The SRT-lattice Boltzmann Equation</h2>
+<p>The discrete form of the Boltzmann transport equation can be expressed as:</p>
+<p>
+<script type="math/tex; mode=display"> f_i(x+c_i,t+1)=f_i(x,t)-\frac{1}{\tau}(f_i(x,t)-f_i^{eq}(x,t)) </script>
+</p>
+<p>This describes the evolution of particle distribution functions along discrete velocities, where the right hand side is often referred to as the collision operation and the evaluation to the left hand side, the streaming operation. Note here that we are going to work in lattice units during the description of the model in which we assume $\Delta x = \Delta t = 1$. For the D2Q9 model, this assumption allows us to express the 9 discrete directions as,</p>
+<p>
+<script type="math/tex; mode=display"> c = \left( \begin{array}& 0 & 1 & 0 & -1 & 0 & 1 & -1 & -1 & 1 \\ 0 & 0 & 1 & 0 & -1 & 1 & 1 & -1 & -1 \end{array} \right) </script>
+</p>
+<p>Additionally, we define the equilibrium distribution function found by an expansion of a Maxwellian distribution as,</p>
+<p>
+<script type="math/tex; mode=display"> f_i^{eq}(x,t) = \omega _ i \rho \left( 1 + \frac{c_iu}{c_s^2}+ \frac{(c_iu)^2}{2c_s^4} - \frac{u^2}{2c_s^2} \right) </script>
+</p>
+<p>where,</p>
+<p>
+<script type="math/tex; mode=display"> c_s^2 = \frac{1}{3} </script>
+</p>
+<p>
+<script type="math/tex; mode=display"> \omega_i=\left\{ \begin{array}{ll}  \frac{4}{9}  & i=0\\ \frac{1}{9} & i=1,2,3,4\\ \frac{1}{36} & i=5,6,7,8 \end{array} \right. </script>
+</p>
+<h3 id="boundary-conditions-and-force-implementation">Boundary Conditions and Force Implementation</h3>
+<p>For this specific example, we are looking at a flow through a channel. We can utilise periodic conditions along the x-axis but have to implement no-slip wall conditions to limit  domain along y-axis. To do this with LBM, the bounceback method is used.  Particle distribution functions that stream into a node flagged as a "wall" are reversed, or "bounced-back" in the opposite direction Therefore, in general for a D2Q9 lattice we obtain,</p>
+<p>
+<script type="math/tex; mode=display"> \left\{ \begin{array}{ll}   f_0=f'_0\\ f_1=f'_3\\ f_2=f'_4\\ f_3=f'_1\\ f_4=f'_2\\ f_5=f'_7\\ f_6=f'_8\\ f_7=f'_5\\ f_8=f'_6\\  \end{array} \right. </script>
+</p>
+<p>where ' indicates the post-bounce-back direction.</p>
+<p>To drive the fluid in the Poiseuille flow example, a body force will be applied. For this we consider a body force <strong>G</strong> acting in each time increment resulting in a momentum change $\Delta\rho u = G$ . To incorporate this, we modify the equilibrium velocity,</p>
+<p>
+<script type="math/tex; mode=display">\rho u^* = \rho u + \tau G </script>
+</p>
+<p>This approach ultimately acts to relax each particle distribution function towards an equilibrium momentum that has included the time-incremental change due to the applied body force. To obtain the bulk fluid velocity, the before and after collision momentum is averaged giving,</p>
+<p>
+<script type="math/tex; mode=display"> \rho v = \rho u + \frac{1}{2} G </script>
+</p>
+<p>and with this we now have all we the dynamics required to implement the specified example.</p>
+<h2 id="model-creation-in-tclb">Model Creation in TCLB</h2>
+<p>As in the previous <a href="TODO:podlinkować fdwave">tutorial</a>, we want to set up a folder named <code>d2q9srt</code> in  <code>~TCLB/models/tutorial/</code> and create the generic file structure (<code>conf.mk</code>, <code>Dynamics.c</code>, <code>Dynamics.R</code>).</p>
+<p>To start off the model, we look to add the nine distribution functions for the nine discrete velocities. This is implemented in the <code>Dynamics.R</code> file, but instead of adding each as its own field we look to stream the functions in the process of calling them at each node. To do this we instead add them as <a href="TODO:podlinkować">Densities</a>:</p>
+<div class="codehilite"><pre><span></span>AddDensity<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;f[0]&quot;</span><span class="p">,</span> dx<span class="o">=</span><span class="m">0</span><span class="p">,</span> dy<span class="o">=</span><span class="m">0</span>  <span class="p">)</span>
+AddDensity<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;f[1]&quot;</span><span class="p">,</span> dx<span class="o">=</span><span class="m">1</span><span class="p">,</span> dy<span class="o">=</span><span class="m">0</span>  <span class="p">)</span>
+AddDensity<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;f[2]&quot;</span><span class="p">,</span> dx<span class="o">=</span><span class="m">0</span><span class="p">,</span> dy<span class="o">=</span><span class="m">1</span>  <span class="p">)</span>
+AddDensity<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;f[3]&quot;</span><span class="p">,</span> dx<span class="o">=</span><span class="m">-1</span><span class="p">,</span>dy<span class="o">=</span><span class="m">0</span>  <span class="p">)</span>
+AddDensity<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;f[4]&quot;</span><span class="p">,</span> dx<span class="o">=</span><span class="m">0</span><span class="p">,</span> dy<span class="o">=</span><span class="m">-1</span> <span class="p">)</span>
+AddDensity<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;f[5]&quot;</span><span class="p">,</span> dx<span class="o">=</span><span class="m">1</span><span class="p">,</span> dy<span class="o">=</span><span class="m">1</span>  <span class="p">)</span>
+AddDensity<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;f[6]&quot;</span><span class="p">,</span> dx<span class="o">=</span><span class="m">-1</span><span class="p">,</span>dy<span class="o">=</span><span class="m">1</span>  <span class="p">)</span>
+AddDensity<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;f[7]&quot;</span><span class="p">,</span> dx<span class="o">=</span><span class="m">-1</span><span class="p">,</span>dy<span class="o">=</span><span class="m">-1</span> <span class="p">)</span>
+AddDensity<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;f[8]&quot;</span><span class="p">,</span> dx<span class="o">=</span><span class="m">1</span><span class="p">,</span> dy<span class="o">=</span><span class="m">-1</span> <span class="p">)</span>
+</pre></div>
+
+
+<p>Notice that the dx and dy coordinates correspond with the <strong>c</strong> matrix previously given. At this stage, it helps to assess what other values will be  needed to initialise and run the LBM. To start off the method, a fluid density and initial velocities must be specified, then to perform the collision operation the relaxation time  and the magnitude of the applied body force need to be defined . Additionally, from this simulation we want to be able to interrogate the macroscopic fluid velocity and density so these must be added as <a href="TODO:link">Quantities</a>.  For this, we define (in <code>Dynamics.R</code>):</p>
+<div class="codehilite"><pre><span></span>AddQuantity<span class="p">(</span> name<span class="o">=</span><span class="s">&quot;U&quot;</span><span class="p">,</span>unit<span class="o">=</span><span class="s">&quot;m/s&quot;</span><span class="p">,</span> <span class="kt">vector</span><span class="o">=</span><span class="kc">TRUE</span> <span class="p">)</span>
+AddQuantity<span class="p">(</span> name<span class="o">=</span><span class="s">&quot;Rho&quot;</span><span class="p">,</span>unit<span class="o">=</span><span class="s">&quot;kg/m3&quot;</span> <span class="p">)</span>
+
+AddSetting<span class="p">(</span> name<span class="o">=</span><span class="s">&quot;omega&quot;</span><span class="p">,</span> comment<span class="o">=</span><span class="s">&#39;inverse of relaxation time&#39;</span><span class="p">)</span>
+AddSetting<span class="p">(</span> name<span class="o">=</span><span class="s">&quot;nu&quot;</span><span class="p">,</span> omega<span class="o">=</span><span class="s">&#39;1.0/(3*nu+0.5)&#39;</span><span class="p">,</span> default<span class="o">=</span><span class="m">0.16666666</span><span class="p">,</span> comment<span class="o">=</span><span class="s">&#39;viscosity&#39;</span><span class="p">)</span>
+AddSetting<span class="p">(</span> name<span class="o">=</span><span class="s">&quot;Velocity&quot;</span><span class="p">,</span>default<span class="o">=</span><span class="m">0</span><span class="p">,</span> comment<span class="o">=</span><span class="s">&#39;inlet/outlet/init velocity&#39;</span><span class="p">,</span> zonal<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+AddSetting<span class="p">(</span> name<span class="o">=</span><span class="s">&quot;GravitationX&quot;</span><span class="p">,</span>default<span class="o">=</span><span class="m">0</span><span class="p">,</span> comment<span class="o">=</span><span class="s">&#39;body/external acceleration&#39;</span><span class="p">,</span> zonal<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+AddSetting<span class="p">(</span> name<span class="o">=</span><span class="s">&quot;GravitationY&quot;</span><span class="p">,</span>default<span class="o">=</span><span class="m">0</span><span class="p">,</span> comment<span class="o">=</span><span class="s">&#39;body/external acceleration&#39;</span><span class="p">,</span> zonal<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+AddSetting<span class="p">(</span> name<span class="o">=</span><span class="s">&quot;Density&quot;</span><span class="p">,</span>default<span class="o">=</span><span class="m">1</span><span class="p">,</span> comment<span class="o">=</span><span class="s">&#39;Density&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>From the above, we have all the variables we need to implement the LBM. The first step is to initialise the lattice over the required domain, this is incorporated as part of the dynamics that are occurring in the model and must be incorporated into the <code>Dynamics.c</code> file within the <code>Init()</code> function.</p>
+<div class="codehilite"><pre><span></span><span class="n">CudaDeviceFunction</span> <span class="kt">void</span> <span class="nf">Init</span><span class="p">(){</span>
+    <span class="n">real_t</span> <span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">Velocity</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">};</span>
+    <span class="n">real_t</span> <span class="n">d</span> <span class="o">=</span> <span class="n">Density</span><span class="p">;</span>
+    <span class="n">SetEquilibrium</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">u</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Notice here that we are calling on the function <code>SetEquilibrium()</code> within which we want to calculate the equilibrium distribution $f_i^{eq}$ for the given density and velocity fields.</p>
+<div class="codehilite"><pre><span></span><span class="n">CudaDeviceFunction</span> <span class="kt">void</span> <span class="nf">SetEquilibrium</span><span class="p">(</span><span class="n">real_t</span> <span class="n">d</span><span class="p">,</span> <span class="n">real_t</span> <span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="p">{</span>
+<span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span> <span class="mf">2.</span> <span class="o">+</span> <span class="p">(</span> <span class="o">-</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span><span class="o">*</span><span class="mf">3.</span> <span class="p">)</span><span class="o">*</span><span class="n">d</span><span class="o">*</span><span class="mf">2.</span><span class="o">/</span><span class="mf">9.</span><span class="p">;</span>
+<span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span> <span class="mf">2.</span> <span class="o">+</span> <span class="p">(</span> <span class="o">-</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mf">2.</span> <span class="p">)</span><span class="o">*</span><span class="mf">3.</span> <span class="p">)</span><span class="o">*</span><span class="n">d</span><span class="o">/</span><span class="mf">18.</span><span class="p">;</span>
+<span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span> <span class="mf">2.</span> <span class="o">+</span> <span class="p">(</span> <span class="o">-</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mf">2.</span> <span class="p">)</span><span class="o">*</span><span class="mf">3.</span> <span class="p">)</span><span class="o">*</span><span class="n">d</span><span class="o">/</span><span class="mf">18.</span><span class="p">;</span>
+<span class="n">f</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span> <span class="mf">2.</span> <span class="o">+</span> <span class="p">(</span> <span class="o">-</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span> <span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mf">2.</span> <span class="p">)</span><span class="o">*</span><span class="mf">3.</span> <span class="p">)</span><span class="o">*</span><span class="n">d</span><span class="o">/</span><span class="mf">18.</span><span class="p">;</span>
+<span class="n">f</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span> <span class="mf">2.</span> <span class="o">+</span> <span class="p">(</span> <span class="o">-</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span> <span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mf">2.</span> <span class="p">)</span><span class="o">*</span><span class="mf">3.</span> <span class="p">)</span><span class="o">*</span><span class="n">d</span><span class="o">/</span><span class="mf">18.</span><span class="p">;</span>
+<span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">+</span> <span class="p">(</span> <span class="p">(</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mf">3.</span> <span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span><span class="o">*</span><span class="mf">3.</span> <span class="p">)</span><span class="o">*</span><span class="n">d</span><span class="o">/</span><span class="mf">36.</span><span class="p">;</span>
+<span class="n">f</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">+</span> <span class="p">(</span> <span class="p">(</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span> <span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mf">3.</span> <span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span><span class="o">*</span><span class="mf">3.</span> <span class="p">)</span><span class="o">*</span><span class="n">d</span><span class="o">/</span><span class="mf">36.</span><span class="p">;</span>
+<span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">+</span> <span class="p">(</span> <span class="p">(</span> <span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span> <span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mf">3.</span> <span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span><span class="o">*</span><span class="mf">3.</span> <span class="p">)</span><span class="o">*</span><span class="n">d</span><span class="o">/</span><span class="mf">36.</span><span class="p">;</span>
+<span class="n">f</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span> <span class="mf">1.</span> <span class="o">+</span> <span class="p">(</span> <span class="p">(</span> <span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mf">3.</span> <span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span><span class="o">*</span><span class="mf">3.</span> <span class="p">)</span><span class="o">*</span><span class="n">d</span><span class="o">/</span><span class="mf">36.</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>With the equilibrium function taken care of, we can now look at updating our initialised lattice. For this, the streaming operation is taken care of with the specification of <a href="TODO:podlinkować">Densities</a> that we made. The collision operation however needs to be implemented and bounce-back for nodes flagged as walls. To do this, we define the <code>run()</code> function to describe what happens at each node at each timestep.</p>
+<div class="codehilite"><pre><span></span><span class="n">CudaDeviceFunction</span> <span class="kt">void</span> <span class="nf">Run</span><span class="p">()</span> <span class="p">{</span>
+<span class="c1">// This defines the dynamics that we run at each node in the domain.</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">NodeType</span> <span class="o">&amp;</span> <span class="n">NODE_BOUNDARY</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nl">NODE_Wall</span><span class="p">:</span>
+        <span class="n">BounceBack</span><span class="p">();</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">((</span><span class="n">NodeType</span> <span class="o">&amp;</span> <span class="n">NODE_BOUNDARY</span><span class="p">)</span> <span class="o">==</span> <span class="n">NODE_BGK</span><span class="p">)</span> 
+    <span class="p">{</span>
+        <span class="n">CollisionBGK</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>Don't forget to declare new node types in <code>Dynamics.R</code>.</strong></p>
+<p>Additionally, in all <code>Dynamics.c</code> files the <code>Color()</code> function is required. (even with <code>./configure --disable-graphics</code>).</p>
+<div class="codehilite"><pre><span></span><span class="n">CudaDeviceFunction</span> <span class="n">float2</span> <span class="nf">Color</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">float2</span> <span class="n">ret</span><span class="p">;</span>
+  <span class="n">ret</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">ret</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The switch function described can also be used for the implementation of velocity/pressure boundaries, but these will not be discussed in this tutorial. As can be seen above, we need to define functions that describe both the <code>BounceBack()</code> and <code>CollisionBGK()</code> operations. The bounce-back operation occurs as described in the theory component of this tutorial where distribution functions are reversed:</p>
+<div class="codehilite"><pre><span></span><span class="n">CudaDeviceFunction</span> <span class="kt">void</span> <span class="nf">BounceBack</span><span class="p">()</span> <span class="p">{</span>
+<span class="c1">// Method to reverse distribution functions along the bounding nodes.</span>
+        <span class="n">real_t</span> <span class="n">uf</span><span class="p">;</span>
+    <span class="n">uf</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+    <span class="n">f</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">uf</span><span class="p">;</span>
+    <span class="n">uf</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+    <span class="n">f</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+    <span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">uf</span><span class="p">;</span>
+    <span class="n">uf</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">];</span>
+    <span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+    <span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">uf</span><span class="p">;</span>
+    <span class="n">uf</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+    <span class="n">f</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>
+    <span class="n">f</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">uf</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The BGK collision, from the left hand side of the discrete Boltzmann equation:</p>
+<div class="codehilite"><pre><span></span><span class="n">CudaDeviceFunction</span> <span class="kt">void</span> <span class="nf">CollisionBGK</span><span class="p">()</span> <span class="p">{</span>
+<span class="c1">// Here we perform a single relaxation time collision operation.</span>
+<span class="c1">// We save memory here by using a single dummy variable</span>
+    <span class="n">real_t</span> <span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">d</span><span class="p">,</span> <span class="n">f_temp</span><span class="p">[</span><span class="mi">9</span><span class="p">];</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">getRho</span><span class="p">();</span>
+    <span class="c1">// pu* = pu + rG</span>
+    <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span> <span class="n">f</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span><span class="o">/</span><span class="n">d</span> <span class="o">+</span> <span class="n">GravitationX</span><span class="o">/</span><span class="n">omega</span> <span class="p">);</span>
+    <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">)</span><span class="o">/</span><span class="n">d</span> <span class="o">+</span> <span class="n">GravitationY</span><span class="o">/</span><span class="n">omega</span> <span class="p">);</span>
+    <span class="n">f_temp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="n">f_temp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">f_temp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+    <span class="n">f_temp</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+    <span class="n">f_temp</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+    <span class="n">f_temp</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+    <span class="n">f_temp</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>
+    <span class="n">f_temp</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">];</span>
+    <span class="n">f_temp</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+    <span class="n">SetEquilibrium</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">u</span><span class="p">);</span> <span class="c1">//stores equilibrium distribution in f[0]-f[8]</span>
+    <span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">f_temp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">omega</span><span class="o">*</span><span class="p">(</span><span class="n">f_temp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>  
+    <span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">f_temp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">omega</span><span class="o">*</span><span class="p">(</span><span class="n">f_temp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">f_temp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">omega</span><span class="o">*</span><span class="p">(</span><span class="n">f_temp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+    <span class="n">f</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">f_temp</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">omega</span><span class="o">*</span><span class="p">(</span><span class="n">f_temp</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>  
+    <span class="n">f</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">f_temp</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="n">omega</span><span class="o">*</span><span class="p">(</span><span class="n">f_temp</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">4</span><span class="p">]);</span>
+    <span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">f_temp</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">-</span> <span class="n">omega</span><span class="o">*</span><span class="p">(</span><span class="n">f_temp</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">]);</span>
+    <span class="n">f</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">f_temp</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">-</span> <span class="n">omega</span><span class="o">*</span><span class="p">(</span><span class="n">f_temp</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">6</span><span class="p">]);</span>  
+    <span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="n">f_temp</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">-</span> <span class="n">omega</span><span class="o">*</span><span class="p">(</span><span class="n">f_temp</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">]);</span>
+    <span class="n">f</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="n">f_temp</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">-</span> <span class="n">omega</span><span class="o">*</span><span class="p">(</span><span class="n">f_temp</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">8</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>With all the dynamics described, all that is left to do now is calculate the macroscopic variables using <code>Get</code> functions to correspond with the Quantities stated in <code>Dynamics.R</code>.The macroscopic density is the sum of all the distribution functions and the momentum is the sum of the distribution functions multiplied by the discrete velocity directions.</p>
+<div class="codehilite"><pre><span></span><span class="n">CudaDeviceFunction</span> <span class="n">real_t</span> <span class="nf">getRho</span><span class="p">()</span> <span class="p">{</span>
+<span class="c1">// This function defines the macroscopic density at the current node.</span>
+    <span class="k">return</span> <span class="n">f</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="n">CudaDeviceFunction</span> <span class="n">vector_t</span> <span class="nf">getU</span><span class="p">()</span> <span class="p">{</span>
+<span class="c1">// This function defines the macroscopic velocity at the current node.</span>
+    <span class="n">real_t</span> <span class="n">d</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="n">vector_t</span> <span class="n">u</span><span class="p">;</span>
+    <span class="c1">// pv = pu + G/2</span>
+    <span class="n">u</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="p">((</span> <span class="n">f</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span><span class="o">/</span><span class="n">d</span> <span class="o">+</span> <span class="n">GravitationX</span><span class="o">*</span><span class="mf">0.5</span> <span class="p">);</span>
+    <span class="n">u</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="p">((</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">)</span><span class="o">/</span><span class="n">d</span> <span class="o">+</span> <span class="n">GravitationY</span><span class="o">*</span><span class="mf">0.5</span> <span class="p">);</span>
+    <span class="n">u</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">u</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2 id="setting-up-a-simulation">Setting up a Simulation</h2>
+<p>In order validate this example, we want to specify the relation between physical and lattice units. For this, we need provide the relations for the spatial and time dimensions. The most natural way to do this is to give the physical <code>dx</code> size and the actual fluid viscosity. This information is stored at the start of the <code>xml</code> input file under the parent heading of <code>&lt;Units&gt;</code>, for this you want to first create a new file by the name of <code>d2q9_poiseuille.xml</code>:</p>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;CLBConfig</span> <span class="na">version=</span><span class="s">&quot;2.0&quot;</span> <span class="na">output=</span><span class="s">&quot;output/&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Units&gt;</span>
+        <span class="nt">&lt;Params</span> <span class="na">size=</span><span class="s">&quot;0.0005m&quot;</span> <span class="na">gauge=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Params</span> <span class="na">nu=</span><span class="s">&quot;1e-5m2/s&quot;</span> <span class="na">gauge=</span><span class="s">&quot;0.1666666666&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/Units&gt;</span>
+</pre></div>
+
+
+<p>The reason for this, is it gives not only a view of how to implement physical values in TCLB but gives a straightforward method to calculate the expected maximum physical velocity. We do this through a comparison of the maximum velocity which in Poiseuille is given by:</p>
+<p>
+<script type="math/tex; mode=display"> u_{max} = \frac{gH^2}{8\nu} </script>
+</p>
+<p>The setup of the test simulation domain is arbitrary and different values can be tested from those shown here. A channel of <code>0.02m</code> length and <code>0.0095m</code> height is chosen with an applied body force of <code>0.000311634m/s^2</code>. As stated above one lattice spacing is equal to <code>0.0005m</code> so the total size of the simulation domain will be <code>0.02 x (0.0095+2*0.0005) m</code>. This is defined as the geometry of the system in the xml set up file noting that the in-built <code>&lt;Channel&gt;</code> function is used to specify the bottom and top nodes as walls:</p>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;Geometry</span> <span class="na">nx=</span><span class="s">&quot;0.02m&quot;</span> <span class="na">ny=</span><span class="s">&quot;0.0105m&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;BGK&gt;&lt;Box/&gt;&lt;/BGK&gt;</span>
+    <span class="nt">&lt;Wall</span> <span class="na">mask=</span><span class="s">&quot;ALL&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Channel/&gt;</span>
+    <span class="nt">&lt;/Wall&gt;</span>
+<span class="nt">&lt;/Geometry&gt;</span>
+</pre></div>
+
+
+<p>Here we can see that the collision method specified for the cells in the entire domain is BGK to align with the <code>Run</code> function. Following on from the geometry of the domain, the model specific settings (defined in <code>Dynamics.R</code>) need to be defined. For this we take a fluid of density <code>1000kg/m^3</code> and choose a relaxation time of the value 1.</p>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;Model&gt;</span>
+    <span class="nt">&lt;Params</span> <span class="na">Velocity=</span><span class="s">&quot;0.0&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Params</span> <span class="na">omega=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Params</span> <span class="na">GravitationX=</span><span class="s">&quot;0.000311634m/s2&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Params</span> <span class="na">Density=</span><span class="s">&quot;1000kg/m3&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/Model&gt;</span>
+</pre></div>
+
+
+<p>The final step is to output the desired quantities both at the start (so we can be sure that we have initialised the lattice correctly) and after the final solution step.</p>
+<div class="codehilite"><pre><span></span>    <span class="nt">&lt;VTK/&gt;</span>
+    <span class="nt">&lt;VTK</span> <span class="na">Iterations=</span><span class="s">&quot;50000&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;Solve</span> <span class="na">Iterations=</span><span class="s">&quot;50000&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/CLBConfig&gt;</span>
+</pre></div>
+
+
+<p>With the model and set-up files created, we can now look to make and run d2q9srt. To do this first enter the TCLB directory and call the run file along with the input file location, after this, the analysis can be performed in Paraview:</p>
+<div class="codehilite"><pre><span></span>make d2q9srt
+CLB/d2q9srt/main d2q9_poiseuille.xml
+paraview output/d2q9_poiseuille_VTK_P00_..pvti
+</pre></div>
+
+
+<p>In case the calculations are run on CPU, an mpi run can also be initiated e.g:</p>
+<div class="codehilite"><pre><span></span>mpirun -np <span class="m">4</span> CLB/d2q9srt/main d2q9_poiseuille.xml
+</pre></div>
+
+
+<p>From the analytical equation given before, we expect a maximum velocity of <code>0.000351562m/s</code>, while in the results it is found to be <code>0.00035293m/s</code> showing an error of 0.389%.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../3.-D2Q9-ShanChen-SRT/" class="btn btn-neutral float-right" title="3. D2Q9 ShanChen SRT">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../1.-finite-difference-wave-equation/" class="btn btn-neutral" title="Finite difference wave equation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../1.-finite-difference-wave-equation/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../3.-D2Q9-ShanChen-SRT/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../../search/require.js"></script>
+      <script src="../../../search/search.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Lukasz Laniewski-Wollk">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Model Information - TCLB Reference Manual</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Model Information";
+    var mkdocs_page_input_path = "5.-Model-development/basics.md";
+    var mkdocs_page_url = "/5.-Model-development/basics/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> TCLB Reference Manual</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Welcome to TCLB</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">1. Getting started</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../1.-Getting-started/installation/">Installation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../1.-Getting-started/running-simulation/">Running calculations</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">2. Installation</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../2.-Installation/ESYS-Particle/">ESYS-Particle</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../2.-Installation/configuration-options/">Configuration options</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../2.-Installation/dependencies/">Dependencies</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">3. Running simulations</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../3.-Running-simulations/case-basics/">Case Basics</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../3.-Running-simulations/examples/">Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../3.-Running-simulations/units/">Units</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../3.-Running-simulations/working-remotely/">Working on a remote host</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">4. Post processing</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../4.-Post-processing/catalyst/">Catalyst</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../4.-Post-processing/paraview/">Analyzing Results with ParaView</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../4.-Post-processing/particles/">Post-processing of particle data</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">5. Model development</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">Model Information</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#general-information">General information</a></li>
+    
+
+    <li class="toctree-l3"><a href="#confmk">conf.mk</a></li>
+    
+
+    <li class="toctree-l3"><a href="#dynamicsr">Dynamics.R</a></li>
+    
+
+    <li class="toctree-l3"><a href="#dynamicsc">Dynamics.C</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#init">Init()</a></li>
+        
+            <li><a class="toctree-l4" href="#run">Run()</a></li>
+        
+            <li><a class="toctree-l4" href="#color">Color()</a></li>
+        
+            <li><a class="toctree-l4" href="#get">Get()</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">XML Reference</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Callbacks/">Callbacks</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Container/">Container</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Executions/">Executions</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Geometry-Boolean-Operation/">Geometry Boolean Operation</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Geometry-Primitive/">Geometry Primitive</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Geometry/">Geometry</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Node-Type-Brush/">Node Type Brush</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Optimization-and-Optimal-Control/">Optimization and Optimal Control</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Params/">Params</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../XML-Reference/Setup-Elements/">Setup Elements</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Models</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">PDE</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/PDE/wave/">Wave</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/PDE/wave2d/">Wave2d</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Article</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/article/d3q19_heat_adj_art/">D3q19 heat adj art</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Electrokinetic</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/electrokinetic/d2q9_npe_guo/">D2q9 npe guo</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/electrokinetic/d2q9_poison_boltzmann/">D2q9 poison boltzmann</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/experimental/d2q9_diff/">D2q9 diff</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/experimental/d2q9_hb/">D2q9 hb</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/experimental/d2q9_inc/">D2q9 inc</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Flow</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d2q9_SRT/">d2q9 SRT</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d2q9_cumulant/">D2q9 cumulant</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d2q9_les/">D2q9 les</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d2q9_thin_film/">D2q9 thin film</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d3q19/">D3q19</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d3q19_les/">D3q19 les</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/flow/d3q27/">D3q27</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D2q9</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d2q9/d2q9/">D2q9</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d2q9/d2q9_BC/">d2q9 BC</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D3q27 cumulant</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant/">D3q27 cumulant</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG/">d3q27 cumulant AVG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_IB/">d3q27 cumulant AVG IB</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_IB_SMAG/">d3q27 cumulant AVG IB SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_AVG_SMAG/">d3q27 cumulant AVG SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_IB/">d3q27 cumulant IB</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_IB_SMAG/">d3q27 cumulant IB SMAG</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/d3q27_cumulant/d3q27_cumulant_SMAG/">d3q27 cumulant SMAG</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/experimental/d3q27_BGK/">d3q27 BGK</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/experimental/d3q27_BGK_galcor/">d3q27 BGK galcor</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Qibb</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/flow/qibb/d3q27_cumulant_qibb_small/">D3q27 cumulant qibb small</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Heat</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/heat/d3q19_heat/">D3q19 heat</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/heat/experimental/d2q9_heat/">D2q9 heat</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Moving</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/moving/d2q9_plate/">D2q9 plate</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Multiphase</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/multiphase/d2q9_csf/">D2q9 csf</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/multiphase/d2q9_kuper/">D2q9 kuper</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/multiphase/d2q9_pf/">D2q9 pf</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/multiphase/d2q9_pf_pressureEvolution/">d2q9 pf pressureEvolution</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/multiphase/d3q19_kuper/">D3q19 kuper</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D2q9 pf velocity</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity/">D2q9 pf velocity</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity_GF/">d2q9 pf velocity GF</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/d2q9_pf_velocity/d2q9_pf_velocity_RT/">d2q9 pf velocity RT</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">D3q27 pf velocity</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/d3q27_pf_velocity/d3q27_pf_velocity/">D3q27 pf velocity</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/d3q27_pf_velocity/d3q27_pf_velocity_SC/">d3q27 pf velocity SC</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/experimental/d2q9_lee/">D2q9 lee</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/experimental/d2q9_pp_LBL/">d2q9 pp LBL</a>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/experimental/d2q9_pp_MCMP/">d2q9 pp MCMP</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Solidification</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/multiphase/solidification/d2q9_solid/">D2q9 solid</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Nonnewtonian</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/nonnewtonian/d3q27_viscoplastic/">D3q27 viscoplastic</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Optimization</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/optimization/d2q9_adj/">D2q9 adj</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/optimization/d2q9_optimalMixing/">d2q9 optimalMixing</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/optimization/d3q19_heat_adj/">D3q19 heat adj</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <span class="caption-text">Experimental</span>
+    <ul class="subnav">
+                <li class="toctree-l4">
+                    
+    <a class="" href="../../models/optimization/experimental/d2q9_heat_adj/">D2q9 heat adj</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Shallowwater</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../models/shallowwater/sw/">Sw</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tutorials</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <span class="caption-text">Model development</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../tutorials/model-development/1.-finite-difference-wave-equation/">1. finite difference wave equation</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../tutorials/model-development/2.-D2Q9-Single-Relexation-Time/">2. D2Q9 Single Relexation Time</a>
+                </li>
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../tutorials/model-development/3.-D2Q9-ShanChen-SRT/">3. D2Q9 ShanChen SRT</a>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Particles</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../tutorials/particles/particles-in-pipe/">Particles in pipe</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">TCLB Reference Manual</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>5. Model development &raquo;</li>
+        
+      
+    
+    <li>Model Information</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>TODO: Dodać rozwiązane tutoriale, sprawdzić by działało wszystko.</p>
+<p>Basic information needed to develop models will apear here. </p>
+<p>Every model in TCLB is defined by a subdirectory of <code>models</code>.
+The <code>conf.mk</code> file stores some additional settings for a model, but it also tells TCLB that this directory is in fact a model.</p>
+<h1 id="general-information">General information</h1>
+<p>Each model consit
+2 most important files: Dynamics.c and Dynamics.R, what goes where(logic, settings, quantities)</p>
+<h1 id="confmk">conf.mk</h1>
+<p>ADJOINT = 1</p>
+<p>This file contains information needed during compilation. It allows compilation of diferent versions of a model(from the same <code>Dynamics.c</code> and <code>Dynamics.R</code>). To do so you need to set <code>OPT</code> variable in <code>conf.mk</code> first. E.g:</p>
+<div class="codehilite"><pre><span></span><span class="nv">OPT</span><span class="o">=</span><span class="s2">&quot;(A+B)*C&quot;</span>
+</pre></div>
+
+
+<p>This will add three optional functionalities: A,B, and C - called Options.  The summation means that two options are exclusive (you can have A or B), and multiplication allows for their combination (you can have A, C and both). The mechanism allows to compile a model for all the resulting combinations. The name of the model is created by adding the option after an underscore. In this case:</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>model_A</td>
+<td>x</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>model_B</td>
+<td></td>
+<td>x</td>
+<td></td>
+</tr>
+<tr>
+<td>model_C</td>
+<td></td>
+<td></td>
+<td>x</td>
+</tr>
+<tr>
+<td>model_A_C</td>
+<td>x</td>
+<td></td>
+<td>x</td>
+</tr>
+<tr>
+<td>model_B_C</td>
+<td></td>
+<td>x</td>
+<td>x</td>
+</tr>
+</tbody>
+</table>
+<p>All these models are compiled from the same Dynamics.R and Dynamics.c, but with different options set to TRUE or FALSE in the Options R variable. One can switch on and off parts of the code with:</p>
+<div class="codehilite"><pre><span></span><span class="kr">if</span> <span class="p">(</span>Options<span class="o">$</span>A<span class="p">)</span> <span class="p">{</span>
+<span class="c1"># code for option A</span>
+<span class="p">}</span> <span class="kr">else</span> <span class="p">{</span>
+<span class="c1"># code without option A</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>or in pure C/C++, with:</p>
+<div class="codehilite"><pre><span></span><span class="cp">#ifdef OPTIONS_A</span>
+<span class="c1">// code for option A</span>
+<span class="cp">#else</span>
+<span class="c1">// code without option A</span>
+<span class="cp">#endif</span>
+</pre></div>
+
+
+<h1 id="dynamicsr">Dynamics.R</h1>
+<p>In this file all </p>
+<ol>
+<li><strong>AddField</strong> - Variables (for instance flow-variables, displacements, etc) that are stored in all mesh nodes. <code>Dynamics.c</code> can access these fields with an offset (e.g. field_name(-1,0)). If the access pattern is repeating you can define a density that predefines a specific offset. Such densities are gathered, and the resulting memory access is optimized.</li>
+</ol>
+<div class="codehilite"><pre><span></span>AddField<span class="p">(</span> name<span class="o">=</span><span class="s">&quot;Name&quot;</span><span class="p">,</span> dx<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="m">0</span><span class="p">),</span> dy<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">),</span> dz<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> comment<span class="o">=</span><span class="s">&#39;Some comment&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>If there is -1,1 access pattern you can use a shortcut:</p>
+<div class="codehilite"><pre><span></span>AddField<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;u&quot;</span><span class="p">,</span> dx<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="m">1</span><span class="p">),</span> dy<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span> 
+<span class="c1"># same as </span>
+AddField<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;u&quot;</span><span class="p">,</span> stencil2d<span class="o">=</span><span class="m">1</span><span class="p">)</span>
+</pre></div>
+
+
+<ol>
+<li><strong>AddDensity</strong> - Variables loaded from <code>Fields</code> with a predefined offset: </li>
+</ol>
+<div class="codehilite"><pre><span></span>AddDensity<span class="p">(</span> name<span class="o">=</span><span class="s">&quot;Name&quot;</span><span class="p">,</span> dx<span class="o">=</span><span class="m">1</span><span class="p">,</span> dy<span class="o">=</span><span class="m">0</span><span class="p">,</span> dz<span class="o">=</span><span class="m">0</span><span class="p">,</span> comment<span class="o">=</span><span class="s">&#39;Some comment&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>It is possible to automate the process and add <code>Density</code> for each possible direction(here for d3q27 model):</p>
+<div class="codehilite"><pre><span></span>x <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">-1</span><span class="p">);</span>
+P <span class="o">=</span> <span class="kp">expand.grid</span><span class="p">(</span>x<span class="o">=</span><span class="m">0</span><span class="o">:</span><span class="m">2</span><span class="p">,</span>y<span class="o">=</span><span class="m">0</span><span class="o">:</span><span class="m">2</span><span class="p">,</span>z<span class="o">=</span><span class="m">0</span><span class="o">:</span><span class="m">2</span><span class="p">)</span>
+U <span class="o">=</span> <span class="kp">expand.grid</span><span class="p">(</span>x<span class="p">,</span>x<span class="p">,</span>x<span class="p">)</span>
+AddDensity<span class="p">(</span>
+        name <span class="o">=</span> <span class="kp">paste</span><span class="p">(</span><span class="s">&quot;f&quot;</span><span class="p">,</span>P<span class="o">$</span>x<span class="p">,</span>P<span class="o">$</span>y<span class="p">,</span>P<span class="o">$</span>z<span class="p">,</span>sep<span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">),</span>
+        dx   <span class="o">=</span> U<span class="p">[,</span><span class="m">1</span><span class="p">],</span>
+        dy   <span class="o">=</span> U<span class="p">[,</span><span class="m">2</span><span class="p">],</span>
+        dz   <span class="o">=</span> U<span class="p">[,</span><span class="m">3</span><span class="p">],</span>
+        comment<span class="o">=</span><span class="kp">paste</span><span class="p">(</span><span class="s">&quot;density F&quot;</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">27-1</span><span class="p">),</span>
+        group<span class="o">=</span><span class="s">&quot;f&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<ol>
+<li><strong>AddGlobal</strong> - Integrates variables and exports calculated value, useful for calculating forces/fluxes etc.</li>
+</ol>
+<div class="codehilite"><pre><span></span>AddGlobal<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;Name&quot;</span><span class="p">,</span> comment<span class="o">=</span><span class="s">&#39;Some comment&#39;</span><span class="p">,</span> unit<span class="o">=</span><span class="s">&quot;unit&quot;</span><span class="p">)</span>
+AddGlobal<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;Flux&quot;</span><span class="p">,</span> comment<span class="o">=</span><span class="s">&#39;Volume flux&#39;</span><span class="p">,</span> unit<span class="o">=</span><span class="s">&quot;m3/s&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<ol>
+<li><strong>AddSetting</strong> - Variables that can be set in the <code>.xml</code> and accessed by <code>Dynamics.c</code> in all  nodes.
+Settings can be <code>zonal</code>, which means that they can be set to different values in different mesh zones, defined in <code>.xml</code> files. It is also possible to define a default value for a setting, this way even if it is not specified in <code>.xml</code> file code will run without trouble.</li>
+</ol>
+<div class="codehilite"><pre><span></span>AddSetting<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;Name&quot;</span><span class="p">,</span> default <span class="o">=</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> comment<span class="o">=</span><span class="s">&quot;some comment&quot;</span><span class="p">,</span> zonal<span class="o">=</span><span class="kc">TRUE</span><span class="o">/</span><span class="kc">FALSE</span> <span class="p">)</span>
+AddSetting<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;Velocity&quot;</span><span class="p">,</span> default<span class="o">=</span><span class="s">&quot;0m/s&quot;</span><span class="p">,</span> comment<span class="o">=</span><span class="s">&#39;Inlet velocity&#39;</span><span class="p">,</span> zonal<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+
+
+<ol>
+<li><strong>AddQuantity</strong> - Values that can be exported to VTK files (and Catalyst). In most cases they are macroscopic human-readable quantites like velocity, pressure, displacement etc.</li>
+</ol>
+<div class="codehilite"><pre><span></span>AddQuantity<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;Name&quot;</span><span class="p">,</span> unit<span class="o">=</span><span class="s">&quot;unit&quot;</span><span class="p">,</span> comment<span class="o">=</span><span class="s">&quot;Some comment&quot;</span><span class="p">,</span> <span class="kt">vector</span> <span class="o">=</span> <span class="bp">T</span><span class="o">/</span><span class="bp">F</span><span class="p">)</span>
+AddQuantity<span class="p">(</span>name<span class="o">=</span><span class="s">&quot;U&quot;</span><span class="p">,</span> unit<span class="o">=</span><span class="s">&quot;m/s&quot;</span><span class="p">,</span> comment<span class="o">=</span><span class="s">&quot;macroscopic velocity&quot;</span><span class="p">,</span> <span class="kt">vector</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span>
+</pre></div>
+
+
+<p><code>vector</code> should be set to <code>T</code> for properties like velocity, momentum etc. 
+In order to extract those values the <code>GetName()</code> function must be defined in <code>Dynamics.c</code>.</p>
+<ol>
+<li><strong>AddNodeType</strong><ul>
+<li>BGK</li>
+<li>MRT</li>
+<li>Wall</li>
+<li>Solid</li>
+<li>WVelocity,WPressure,WPressureL</li>
+<li>EVelocity,EPressure,EPressureL</li>
+<li>Inlet</li>
+<li>Outlet</li>
+</ul>
+</li>
+</ol>
+<p>File structure, what are quantities, globals, etc, whats needed in (almost) every model</p>
+<p><strong>Stages</strong></p>
+<p>Stages are specific functions in <code>Dynamics.c</code>, for which we can define which <code>Densities</code> will be loaded and which <code>Fields</code> will be saved. Stages can be defined in <code>Dynamics.R</code> by:</p>
+<div class="codehilite"><pre><span></span>AddStage<span class="p">(</span><span class="s">&quot;BaseIteration&quot;</span><span class="p">,</span> <span class="s">&quot;Run&quot;</span><span class="p">,</span> save<span class="o">=</span>Fields<span class="o">$</span>group <span class="o">==</span> <span class="s">&quot;f&quot;</span><span class="p">,</span> load<span class="o">=</span>DensityAll<span class="o">$</span>group <span class="o">==</span> <span class="s">&quot;f&quot;</span><span class="p">)</span>
+AddStage<span class="p">(</span><span class="s">&quot;CalcRho&quot;</span><span class="p">,</span> save<span class="o">=</span><span class="s">&quot;rho&quot;</span><span class="p">,</span> load<span class="o">=</span>DensityAll<span class="o">$</span>group <span class="o">==</span> <span class="s">&quot;f&quot;</span><span class="p">)</span>
+AddStage<span class="p">(</span><span class="s">&quot;CalcNu&quot;</span><span class="p">,</span> save<span class="o">=</span><span class="s">&quot;nu&quot;</span><span class="p">,</span> load<span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+
+
+<p><strong>Action</strong>  is a series of <code>Stages</code> executed in a order. For now there are two meaningful actions:</p>
+<ul>
+<li><code>Iteration</code>, which defines a single (primal) iteration</li>
+<li><code>Init</code>, which defines the initialization procedure in each node</li>
+</ul>
+<p>Actions can be defined in <code>Dynamics.R</code> by:</p>
+<div class="codehilite"><pre><span></span>AddAction<span class="p">(</span><span class="s">&quot;Iteration&quot;</span><span class="p">,</span> <span class="kt">c</span><span class="p">(</span><span class="s">&quot;BaseIteration&quot;</span><span class="p">,</span><span class="s">&quot;CalcRho&quot;</span><span class="p">,</span><span class="s">&quot;CalcNu&quot;</span><span class="p">))</span>
+</pre></div>
+
+
+<h1 id="dynamicsc">Dynamics.C</h1>
+<p>This file contains the actual 'logic' behind the model. All the calculations are done here. It must contain at least 3 functions to work: <code>Init()</code>, <code>Color()</code>, and <code>Run()</code>. Since CUDA architecture is being used, all the functions need to be preceded by "CudaDeviceFunction".</p>
+<h3 id="init">Init()</h3>
+<p>Function called to initialise velocity in each node</p>
+<div class="codehilite"><pre><span></span><span class="n">CudaDeviceFunction</span> <span class="kt">void</span> <span class="nf">Init</span><span class="p">()</span> <span class="p">{</span>
+<span class="c1">// Initialise the velocity at each node </span>
+        <span class="n">real_t</span> <span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">Velocity</span><span class="p">,</span> <span class="mf">0.</span><span class="p">};</span>
+        <span class="n">real_t</span> <span class="n">d</span>    <span class="o">=</span> <span class="n">Density</span><span class="p">;</span>
+        <span class="n">SetEquilibrium</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">u</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="run">Run()</h3>
+<p>This function is called each iteration to perform calculations. It should contain instruction for each <code>NodeType</code> used in case. Its general structure looks like this:</p>
+<div class="codehilite"><pre><span></span><span class="n">CudaDeviceFunction</span> <span class="kt">void</span> <span class="nf">Run</span><span class="p">(){</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">NodeType</span> <span class="o">&amp;</span> <span class="n">NODE_GROUP</span><span class="p">){</span> <span class="c1">//Because of the NodeType structure checking must be done this way</span>
+                                    <span class="c1">// If any SYMMETRY nodes are present, they need to be &#39;done&#39; first</span>
+        <span class="k">case</span> <span class="nl">NODE_A</span><span class="p">:</span>
+            <span class="n">A</span><span class="p">();</span>                    <span class="c1">//Function with logic for this NodeType</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="nl">NODE_B</span><span class="p">:</span>
+            <span class="n">B</span><span class="p">();</span>
+            <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">NodeType</span> <span class="o">&amp;</span> <span class="n">NODE_GROUP</span><span class="p">){</span> <span class="c1">//Boundary conditions(BOUNDARY group) must be calculated before collision/streaming</span>
+        <span class="p">.</span>
+        <span class="p">.</span>
+        <span class="p">.</span>
+    <span class="p">}</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">NodeType</span> <span class="o">&amp;</span> <span class="n">NODE_GROUP</span><span class="p">){</span> <span class="c1">//Collision/streaming must be done as last step</span>
+        <span class="p">.</span>
+        <span class="p">.</span>
+        <span class="p">.</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="color">Color()</h3>
+<p>This function is used to obtain preview during calculations, when not in use it can be only declared without any actual code inside.</p>
+<div class="codehilite"><pre><span></span><span class="n">CudaDeviceFunction</span> <span class="n">float2</span> <span class="nf">Color</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">float2</span> <span class="n">ret</span><span class="p">;</span>
+        <span class="n">vector_t</span> <span class="n">u</span> <span class="o">=</span> <span class="n">getU</span><span class="p">();</span>
+        <span class="n">ret</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">u</span><span class="p">.</span><span class="n">x</span><span class="o">*</span><span class="n">u</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">u</span><span class="p">.</span><span class="n">y</span><span class="o">*</span><span class="n">u</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>    
+        <span class="k">if</span> <span class="p">(</span><span class="n">NodeType</span> <span class="o">==</span> <span class="n">NODE_Solid</span><span class="p">){</span>
+                <span class="n">ret</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">ret</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="get">Get()</h3>
+<p>In order to extract <code>Quantities</code> defined in <code>Dynamics.R</code> we must create function that will compute desired value. Depending on values of <code>vector</code> argument, the <code>Get()</code> function will be either <code>real_t</code> or <code>vector_t</code> type. Below are given examples for the <code>Quantities</code> used most often: </p>
+<div class="codehilite"><pre><span></span><span class="n">CudaDeviceFunction</span> <span class="n">real_t</span> <span class="nf">getRho</span><span class="p">()</span> <span class="p">{</span>
+<span class="c1">// This function defines the macroscopic density at the current node.</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="n">CudaDeviceFunction</span> <span class="n">vector_t</span> <span class="nf">getU</span><span class="p">()</span> <span class="p">{</span>
+<span class="c1">// This function defines the macroscopic velocity at the current node.</span>
+        <span class="n">real_t</span> <span class="n">d</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="n">vector_t</span> <span class="n">u</span><span class="p">;</span>
+        <span class="c1">// pv = pu + G/2</span>
+        <span class="n">u</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="p">((</span> <span class="n">f</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span><span class="o">/</span><span class="n">d</span> <span class="o">+</span> <span class="n">GravitationX</span><span class="o">*</span><span class="mf">0.5</span> <span class="p">);</span>
+        <span class="n">u</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="p">((</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">-</span><span class="n">f</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">)</span><span class="o">/</span><span class="n">d</span> <span class="o">+</span> <span class="n">GravitationY</span><span class="o">*</span><span class="mf">0.5</span> <span class="p">);</span>
+        <span class="n">u</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">u</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../XML-Reference/Callbacks/" class="btn btn-neutral float-right" title="Callbacks">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../4.-Post-processing/particles/" class="btn btn-neutral" title="Post-processing of particle data"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../4.-Post-processing/particles/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../XML-Reference/Callbacks/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>
