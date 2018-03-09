@@ -1,632 +1,2185 @@
+
+
+
+
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <meta name="author" content="Lukasz Laniewski-Wollk">
-  <link rel="shortcut icon" href="../../../img/favicon.ico">
-  <title>Wave2d - TCLB Reference Manual</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-
-  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="../../../css/highlight.css">
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Wave2d";
-    var mkdocs_page_input_path = "models/PDE/wave2d.md";
-    var mkdocs_page_url = "/models/PDE/wave2d/";
-  </script>
-  
-  <script src="../../../js/jquery-2.1.1.min.js"></script>
-  <script src="../../../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../../../js/highlight.pack.js"></script> 
-  
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
-
+<html lang="en" class="no-js">
+  <head>
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-      <div class="wy-side-nav-search">
-        <a href="../../.." class="icon icon-home"> TCLB Reference Manual</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-  </form>
-</div>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="The reference manual for the TCLB solver">
+      
+      
+      
+        <meta name="author" content="Lukasz Laniewski-Wollk">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.7.0">
+    
+    
+      
+        <title>Wave2d - TCLB Reference Manual</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.78aab2dc.css">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <a href="#description" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../.." title="TCLB Reference Manual" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
       </div>
-
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
-            <li class="toctree-l1">
-		
-    <a class="" href="../../..">Welcome to TCLB</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">1. Getting started</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../../1.-Getting-started/installation/">Installation</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../1.-Getting-started/running-simulation/">Running calculations</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">2. Installation</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../../2.-Installation/ESYS-Particle/">ESYS-Particle</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../2.-Installation/configuration-options/">Configuration options</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../2.-Installation/dependencies/">Dependencies</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">3. Running simulations</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../../3.-Running-simulations/case-basics/">Case Basics</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../3.-Running-simulations/examples/">Examples</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../3.-Running-simulations/units/">Units</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../3.-Running-simulations/working-remotely/">Working on a remote host</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">4. Post processing</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../../4.-Post-processing/catalyst/">Catalyst</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../4.-Post-processing/paraview/">Analyzing Results with ParaView</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../4.-Post-processing/particles/">Post-processing of particle data</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">5. Model development</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../../5.-Model-development/basics/">Model Information</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">XML Reference</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../../XML-Reference/Callbacks/">Callbacks</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../XML-Reference/Container/">Container</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../XML-Reference/Executions/">Executions</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../XML-Reference/Geometry-Boolean-Operation/">Geometry Boolean Operation</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../XML-Reference/Geometry-Primitive/">Geometry Primitive</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../XML-Reference/Geometry/">Geometry</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../XML-Reference/Node-Type-Brush/">Node Type Brush</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../XML-Reference/Optimization-and-Optimal-Control/">Optimization and Optimal Control</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../XML-Reference/Params/">Params</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../XML-Reference/Setup-Elements/">Setup Elements</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Models</span>
-    <ul class="subnav">
-                <li class=" current">
-                    
-    <span class="caption-text">PDE</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="../wave/">Wave</a>
-                </li>
-                <li class="toctree-l3 current">
-                    
-    <a class="current" href="./">Wave2d</a>
-    <ul class="subnav">
             
-    <li class="toctree-l4"><a href="#description">Description</a></li>
-    
-
-    <li class="toctree-l4"><a href="#details">Details</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l5" href="#zonal-settings">Zonal Settings</a></li>
-        
-            <li><a class="toctree-l5" href="#global-settings">Global Settings</a></li>
-        
-            <li><a class="toctree-l5" href="#exported-quantities-vtk-etc">Exported Quantities (VTK, etc)</a></li>
-        
-            <li><a class="toctree-l5" href="#node-types">Node Types</a></li>
-        
-            <li><a class="toctree-l5" href="#solved-fields">Solved fields</a></li>
-        
-            <li><a class="toctree-l5" href="#densities-default-accessors">Densities - default accessors</a></li>
-        
-            <li><a class="toctree-l5" href="#action-stages">Action stages</a></li>
-        
-            <li><a class="toctree-l5" href="#actions">Actions</a></li>
-        
-        </ul>
-    
-
-    </ul>
-                </li>
-    </ul>
-                </li>
-                <li class="">
-                    
-    <span class="caption-text">Article</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../article/d3q19_heat_adj_art/">D3q19 heat adj art</a>
-                </li>
-    </ul>
-                </li>
-                <li class="">
-                    
-    <span class="caption-text">Electrokinetic</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../electrokinetic/d2q9_npe_guo/">D2q9 npe guo</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../electrokinetic/d2q9_poison_boltzmann/">D2q9 poison boltzmann</a>
-                </li>
-    </ul>
-                </li>
-                <li class="">
-                    
-    <span class="caption-text">Experimental</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../experimental/d2q9_diff/">D2q9 diff</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../experimental/d2q9_hb/">D2q9 hb</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../experimental/d2q9_inc/">D2q9 inc</a>
-                </li>
-    </ul>
-                </li>
-                <li class="">
-                    
-    <span class="caption-text">Flow</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../flow/d2q9_SRT/">d2q9 SRT</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../flow/d2q9_cumulant/">D2q9 cumulant</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../flow/d2q9_les/">D2q9 les</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../flow/d2q9_thin_film/">D2q9 thin film</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../flow/d3q19/">D3q19</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../flow/d3q19_les/">D3q19 les</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../flow/d3q27/">D3q27</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <span class="caption-text">D2q9</span>
-    <ul class="subnav">
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../flow/d2q9/d2q9/">D2q9</a>
-                </li>
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../flow/d2q9/d2q9_BC/">d2q9 BC</a>
-                </li>
-    </ul>
-                </li>
-                <li class="toctree-l3">
-                    
-    <span class="caption-text">D3q27 cumulant</span>
-    <ul class="subnav">
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../flow/d3q27_cumulant/d3q27_cumulant/">D3q27 cumulant</a>
-                </li>
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../flow/d3q27_cumulant/d3q27_cumulant_AVG/">d3q27 cumulant AVG</a>
-                </li>
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../flow/d3q27_cumulant/d3q27_cumulant_AVG_IB/">d3q27 cumulant AVG IB</a>
-                </li>
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../flow/d3q27_cumulant/d3q27_cumulant_AVG_IB_SMAG/">d3q27 cumulant AVG IB SMAG</a>
-                </li>
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../flow/d3q27_cumulant/d3q27_cumulant_AVG_SMAG/">d3q27 cumulant AVG SMAG</a>
-                </li>
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../flow/d3q27_cumulant/d3q27_cumulant_IB/">d3q27 cumulant IB</a>
-                </li>
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../flow/d3q27_cumulant/d3q27_cumulant_IB_SMAG/">d3q27 cumulant IB SMAG</a>
-                </li>
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../flow/d3q27_cumulant/d3q27_cumulant_SMAG/">d3q27 cumulant SMAG</a>
-                </li>
-    </ul>
-                </li>
-                <li class="toctree-l3">
-                    
-    <span class="caption-text">Experimental</span>
-    <ul class="subnav">
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../flow/experimental/d3q27_BGK/">d3q27 BGK</a>
-                </li>
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../flow/experimental/d3q27_BGK_galcor/">d3q27 BGK galcor</a>
-                </li>
-    </ul>
-                </li>
-                <li class="toctree-l3">
-                    
-    <span class="caption-text">Qibb</span>
-    <ul class="subnav">
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../flow/qibb/d3q27_cumulant_qibb_small/">D3q27 cumulant qibb small</a>
-                </li>
-    </ul>
-                </li>
-    </ul>
-                </li>
-                <li class="">
-                    
-    <span class="caption-text">Heat</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../heat/d3q19_heat/">D3q19 heat</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <span class="caption-text">Experimental</span>
-    <ul class="subnav">
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../heat/experimental/d2q9_heat/">D2q9 heat</a>
-                </li>
-    </ul>
-                </li>
-    </ul>
-                </li>
-                <li class="">
-                    
-    <span class="caption-text">Moving</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../moving/d2q9_plate/">D2q9 plate</a>
-                </li>
-    </ul>
-                </li>
-                <li class="">
-                    
-    <span class="caption-text">Multiphase</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../multiphase/d2q9_csf/">D2q9 csf</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../multiphase/d2q9_kuper/">D2q9 kuper</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../multiphase/d2q9_pf/">D2q9 pf</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../multiphase/d2q9_pf_pressureEvolution/">d2q9 pf pressureEvolution</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../multiphase/d3q19_kuper/">D3q19 kuper</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <span class="caption-text">D2q9 pf velocity</span>
-    <ul class="subnav">
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../multiphase/d2q9_pf_velocity/d2q9_pf_velocity/">D2q9 pf velocity</a>
-                </li>
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../multiphase/d2q9_pf_velocity/d2q9_pf_velocity_GF/">d2q9 pf velocity GF</a>
-                </li>
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../multiphase/d2q9_pf_velocity/d2q9_pf_velocity_RT/">d2q9 pf velocity RT</a>
-                </li>
-    </ul>
-                </li>
-                <li class="toctree-l3">
-                    
-    <span class="caption-text">D3q27 pf velocity</span>
-    <ul class="subnav">
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../multiphase/d3q27_pf_velocity/d3q27_pf_velocity/">D3q27 pf velocity</a>
-                </li>
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../multiphase/d3q27_pf_velocity/d3q27_pf_velocity_SC/">d3q27 pf velocity SC</a>
-                </li>
-    </ul>
-                </li>
-                <li class="toctree-l3">
-                    
-    <span class="caption-text">Experimental</span>
-    <ul class="subnav">
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../multiphase/experimental/d2q9_lee/">D2q9 lee</a>
-                </li>
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../multiphase/experimental/d2q9_pp_LBL/">d2q9 pp LBL</a>
-                </li>
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../multiphase/experimental/d2q9_pp_MCMP/">d2q9 pp MCMP</a>
-                </li>
-    </ul>
-                </li>
-                <li class="toctree-l3">
-                    
-    <span class="caption-text">Solidification</span>
-    <ul class="subnav">
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../multiphase/solidification/d2q9_solid/">D2q9 solid</a>
-                </li>
-    </ul>
-                </li>
-    </ul>
-                </li>
-                <li class="">
-                    
-    <span class="caption-text">Nonnewtonian</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../nonnewtonian/d3q27_viscoplastic/">D3q27 viscoplastic</a>
-                </li>
-    </ul>
-                </li>
-                <li class="">
-                    
-    <span class="caption-text">Optimization</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../optimization/d2q9_adj/">D2q9 adj</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../optimization/d2q9_optimalMixing/">d2q9 optimalMixing</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../optimization/d3q19_heat_adj/">D3q19 heat adj</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <span class="caption-text">Experimental</span>
-    <ul class="subnav">
-                <li class="toctree-l4">
-                    
-    <a class="" href="../../optimization/experimental/d2q9_heat_adj/">D2q9 heat adj</a>
-                </li>
-    </ul>
-                </li>
-    </ul>
-                </li>
-                <li class="">
-                    
-    <span class="caption-text">Shallowwater</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../shallowwater/sw/">Sw</a>
-                </li>
-    </ul>
-                </li>
-    </ul>
-	    </li>
+              <span class="md-header-nav__topic">
+                TCLB Reference Manual
+              </span>
+              <span class="md-header-nav__topic">
+                Wave2d
+              </span>
+            
           
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Tutorials</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <span class="caption-text">Model development</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../../tutorials/model-development/1.-finite-difference-wave-equation/">1. finite difference wave equation</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../../tutorials/model-development/2.-D2Q9-Single-Relexation-Time/">2. D2Q9 Single Relexation Time</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../../tutorials/model-development/3.-D2Q9-ShanChen-SRT/">3. D2Q9 ShanChen SRT</a>
-                </li>
-    </ul>
-                </li>
-                <li class="">
-                    
-    <span class="caption-text">Particles</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../../tutorials/particles/particles-in-pipe/">Particles in pipe</a>
-                </li>
-    </ul>
-                </li>
-    </ul>
-	    </li>
-          
-        </ul>
+        </div>
       </div>
-      &nbsp;
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../..">TCLB Reference Manual</a>
-      </nav>
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="../../..">Docs</a> &raquo;</li>
-    
-      
+      <div class="md-flex__cell md-flex__cell--shrink">
         
-          <li>Models &raquo;</li>
-        
-      
-        
-          <li>PDE &raquo;</li>
-        
-      
-    
-    <li>Wave2d</li>
-    <li class="wy-breadcrumbs-aside">
-      
-    </li>
-  </ul>
-  <hr/>
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-          <div role="main">
-            <div class="section">
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/CFD-GO/TCLB" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      CFD-GO/TCLB
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <span class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </span>
+    TCLB Reference Manual
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/CFD-GO/TCLB" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      CFD-GO/TCLB
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Welcome to TCLB" class="md-nav__link">
+      Welcome to TCLB
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      1. Getting started
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        1. Getting started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../1.-Getting-started/installation/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../1.-Getting-started/running-simulation/" title="Running calculations" class="md-nav__link">
+      Running calculations
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      2. Installation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        2. Installation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../2.-Installation/ESYS-Particle/" title="ESYS-Particle" class="md-nav__link">
+      ESYS-Particle
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../2.-Installation/configuration-options/" title="Configuration options" class="md-nav__link">
+      Configuration options
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../2.-Installation/dependencies/" title="Dependencies" class="md-nav__link">
+      Dependencies
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      3. Running simulations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        3. Running simulations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../3.-Running-simulations/case-basics/" title="Case Basics" class="md-nav__link">
+      Case Basics
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../3.-Running-simulations/examples/" title="Examples" class="md-nav__link">
+      Examples
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../3.-Running-simulations/units/" title="Units" class="md-nav__link">
+      Units
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../3.-Running-simulations/working-remotely/" title="Working on a remote host" class="md-nav__link">
+      Working on a remote host
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      4. Post processing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        4. Post processing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../4.-Post-processing/catalyst/" title="Catalyst" class="md-nav__link">
+      Catalyst
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../4.-Post-processing/paraview/" title="Analyzing Results with ParaView" class="md-nav__link">
+      Analyzing Results with ParaView
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../4.-Post-processing/particles/" title="Post-processing of particle data" class="md-nav__link">
+      Post-processing of particle data
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      5. Model development
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        5. Model development
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../5.-Model-development/basics/" title="Model Information" class="md-nav__link">
+      Model Information
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../5.-Model-development/tips/" title="Pro Tips" class="md-nav__link">
+      Pro Tips
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      XML Reference
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        XML Reference
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../XML-Reference/Callbacks/" title="Callbacks" class="md-nav__link">
+      Callbacks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../XML-Reference/Container/" title="Container" class="md-nav__link">
+      Container
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../XML-Reference/Executions/" title="Executions" class="md-nav__link">
+      Executions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../XML-Reference/Geometry-Boolean-Operation/" title="Geometry Boolean Operation" class="md-nav__link">
+      Geometry Boolean Operation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../XML-Reference/Geometry-Primitive/" title="Geometry Primitive" class="md-nav__link">
+      Geometry Primitive
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../XML-Reference/Geometry/" title="Geometry" class="md-nav__link">
+      Geometry
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../XML-Reference/Node-Type-Brush/" title="Node Type Brush" class="md-nav__link">
+      Node Type Brush
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../XML-Reference/Optimization-and-Optimal-Control/" title="Optimization and Optimal Control" class="md-nav__link">
+      Optimization and Optimal Control
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../XML-Reference/Params/" title="Params" class="md-nav__link">
+      Params
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../XML-Reference/Setup-Elements/" title="Setup Elements" class="md-nav__link">
+      Setup Elements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
+    
+    <label class="md-nav__link" for="nav-8">
+      Models
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Models
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-1" type="checkbox" id="nav-8-1" checked>
+    
+    <label class="md-nav__link" for="nav-8-1">
+      PDE
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-1">
+        PDE
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../wave/" title="Wave" class="md-nav__link">
+      Wave
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Wave2d
+      </label>
+    
+    <a href="./" title="Wave2d" class="md-nav__link md-nav__link--active">
+      Wave2d
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#details" title="Details" class="md-nav__link">
+    Details
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zonal-settings" title="Zonal Settings" class="md-nav__link">
+    Zonal Settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-settings" title="Global Settings" class="md-nav__link">
+    Global Settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exported-quantities-vtk-etc" title="Exported Quantities (VTK, etc)" class="md-nav__link">
+    Exported Quantities (VTK, etc)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exported-global-integrals-csv-etc" title="Exported Global Integrals (CSV, etc)" class="md-nav__link">
+    Exported Global Integrals (CSV, etc)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node-types" title="Node Types" class="md-nav__link">
+    Node Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solved-fields" title="Solved fields" class="md-nav__link">
+    Solved fields
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#densities-default-accessors" title="Densities - default accessors" class="md-nav__link">
+    Densities - default accessors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#action-stages" title="Action stages" class="md-nav__link">
+    Action stages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actions" title="Actions" class="md-nav__link">
+    Actions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2">
+    
+    <label class="md-nav__link" for="nav-8-2">
+      Article
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        Article
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../article/d3q19_heat_adj_art/" title="D3q19 heat adj art" class="md-nav__link">
+      D3q19 heat adj art
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-3" type="checkbox" id="nav-8-3">
+    
+    <label class="md-nav__link" for="nav-8-3">
+      Electrokinetic
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-3">
+        Electrokinetic
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../electrokinetic/d2q9_npe_guo/" title="D2q9 npe guo" class="md-nav__link">
+      D2q9 npe guo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../electrokinetic/d2q9_poison_boltzmann/" title="D2q9 poison boltzmann" class="md-nav__link">
+      D2q9 poison boltzmann
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-4" type="checkbox" id="nav-8-4">
+    
+    <label class="md-nav__link" for="nav-8-4">
+      Experimental
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-4">
+        Experimental
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../experimental/d2q9_diff/" title="D2q9 diff" class="md-nav__link">
+      D2q9 diff
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../experimental/d2q9_hb/" title="D2q9 hb" class="md-nav__link">
+      D2q9 hb
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../experimental/d2q9_inc/" title="D2q9 inc" class="md-nav__link">
+      D2q9 inc
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-5" type="checkbox" id="nav-8-5">
+    
+    <label class="md-nav__link" for="nav-8-5">
+      Flow
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-5">
+        Flow
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/d2q9_SRT/" title="d2q9 SRT" class="md-nav__link">
+      d2q9 SRT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/d2q9_cumulant/" title="D2q9 cumulant" class="md-nav__link">
+      D2q9 cumulant
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/d2q9_les/" title="D2q9 les" class="md-nav__link">
+      D2q9 les
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/d2q9_thin_film/" title="D2q9 thin film" class="md-nav__link">
+      D2q9 thin film
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/d3q19/" title="D3q19" class="md-nav__link">
+      D3q19
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/d3q19_les/" title="D3q19 les" class="md-nav__link">
+      D3q19 les
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/d3q27/" title="D3q27" class="md-nav__link">
+      D3q27
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-5-8" type="checkbox" id="nav-8-5-8">
+    
+    <label class="md-nav__link" for="nav-8-5-8">
+      D2q9
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-5-8">
+        D2q9
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/d2q9/d2q9/" title="D2q9" class="md-nav__link">
+      D2q9
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/d2q9/d2q9_BC/" title="d2q9 BC" class="md-nav__link">
+      d2q9 BC
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-5-9" type="checkbox" id="nav-8-5-9">
+    
+    <label class="md-nav__link" for="nav-8-5-9">
+      D3q27 cumulant
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-5-9">
+        D3q27 cumulant
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/d3q27_cumulant/d3q27_cumulant/" title="D3q27 cumulant" class="md-nav__link">
+      D3q27 cumulant
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/d3q27_cumulant/d3q27_cumulant_AVG/" title="d3q27 cumulant AVG" class="md-nav__link">
+      d3q27 cumulant AVG
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/d3q27_cumulant/d3q27_cumulant_AVG_IB/" title="d3q27 cumulant AVG IB" class="md-nav__link">
+      d3q27 cumulant AVG IB
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/d3q27_cumulant/d3q27_cumulant_AVG_IB_SMAG/" title="d3q27 cumulant AVG IB SMAG" class="md-nav__link">
+      d3q27 cumulant AVG IB SMAG
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/d3q27_cumulant/d3q27_cumulant_AVG_SMAG/" title="d3q27 cumulant AVG SMAG" class="md-nav__link">
+      d3q27 cumulant AVG SMAG
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/d3q27_cumulant/d3q27_cumulant_IB/" title="d3q27 cumulant IB" class="md-nav__link">
+      d3q27 cumulant IB
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/d3q27_cumulant/d3q27_cumulant_IB_SMAG/" title="d3q27 cumulant IB SMAG" class="md-nav__link">
+      d3q27 cumulant IB SMAG
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/d3q27_cumulant/d3q27_cumulant_SMAG/" title="d3q27 cumulant SMAG" class="md-nav__link">
+      d3q27 cumulant SMAG
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-5-10" type="checkbox" id="nav-8-5-10">
+    
+    <label class="md-nav__link" for="nav-8-5-10">
+      Experimental
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-5-10">
+        Experimental
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/experimental/d3q27_BGK/" title="d3q27 BGK" class="md-nav__link">
+      d3q27 BGK
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/experimental/d3q27_BGK_galcor/" title="d3q27 BGK galcor" class="md-nav__link">
+      d3q27 BGK galcor
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-5-11" type="checkbox" id="nav-8-5-11">
+    
+    <label class="md-nav__link" for="nav-8-5-11">
+      Qibb
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-5-11">
+        Qibb
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../flow/qibb/d3q27_cumulant_qibb_small/" title="D3q27 cumulant qibb small" class="md-nav__link">
+      D3q27 cumulant qibb small
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-6" type="checkbox" id="nav-8-6">
+    
+    <label class="md-nav__link" for="nav-8-6">
+      Heat
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-6">
+        Heat
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../heat/d3q19_heat/" title="D3q19 heat" class="md-nav__link">
+      D3q19 heat
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-6-2" type="checkbox" id="nav-8-6-2">
+    
+    <label class="md-nav__link" for="nav-8-6-2">
+      Experimental
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-6-2">
+        Experimental
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../heat/experimental/d2q9_heat/" title="D2q9 heat" class="md-nav__link">
+      D2q9 heat
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-7" type="checkbox" id="nav-8-7">
+    
+    <label class="md-nav__link" for="nav-8-7">
+      Moving
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-7">
+        Moving
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../moving/d2q9_plate/" title="D2q9 plate" class="md-nav__link">
+      D2q9 plate
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-8" type="checkbox" id="nav-8-8">
+    
+    <label class="md-nav__link" for="nav-8-8">
+      Multiphase
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-8">
+        Multiphase
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../multiphase/d2q9_csf/" title="D2q9 csf" class="md-nav__link">
+      D2q9 csf
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../multiphase/d2q9_kuper/" title="D2q9 kuper" class="md-nav__link">
+      D2q9 kuper
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../multiphase/d2q9_pf/" title="D2q9 pf" class="md-nav__link">
+      D2q9 pf
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../multiphase/d2q9_pf_pressureEvolution/" title="d2q9 pf pressureEvolution" class="md-nav__link">
+      d2q9 pf pressureEvolution
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../multiphase/d3q19_kuper/" title="D3q19 kuper" class="md-nav__link">
+      D3q19 kuper
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-8-6" type="checkbox" id="nav-8-8-6">
+    
+    <label class="md-nav__link" for="nav-8-8-6">
+      D2q9 pf velocity
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-8-6">
+        D2q9 pf velocity
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../multiphase/d2q9_pf_velocity/d2q9_pf_velocity/" title="D2q9 pf velocity" class="md-nav__link">
+      D2q9 pf velocity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../multiphase/d2q9_pf_velocity/d2q9_pf_velocity_GF/" title="d2q9 pf velocity GF" class="md-nav__link">
+      d2q9 pf velocity GF
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../multiphase/d2q9_pf_velocity/d2q9_pf_velocity_RT/" title="d2q9 pf velocity RT" class="md-nav__link">
+      d2q9 pf velocity RT
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-8-7" type="checkbox" id="nav-8-8-7">
+    
+    <label class="md-nav__link" for="nav-8-8-7">
+      D3q27 pf velocity
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-8-7">
+        D3q27 pf velocity
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../multiphase/d3q27_pf_velocity/d3q27_pf_velocity/" title="D3q27 pf velocity" class="md-nav__link">
+      D3q27 pf velocity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../multiphase/d3q27_pf_velocity/d3q27_pf_velocity_SC/" title="d3q27 pf velocity SC" class="md-nav__link">
+      d3q27 pf velocity SC
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-8-8" type="checkbox" id="nav-8-8-8">
+    
+    <label class="md-nav__link" for="nav-8-8-8">
+      Experimental
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-8-8">
+        Experimental
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../multiphase/experimental/d2q9_lee/" title="D2q9 lee" class="md-nav__link">
+      D2q9 lee
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../multiphase/experimental/d2q9_pp_LBL/" title="d2q9 pp LBL" class="md-nav__link">
+      d2q9 pp LBL
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../multiphase/experimental/d2q9_pp_MCMP/" title="d2q9 pp MCMP" class="md-nav__link">
+      d2q9 pp MCMP
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-8-9" type="checkbox" id="nav-8-8-9">
+    
+    <label class="md-nav__link" for="nav-8-8-9">
+      Solidification
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-8-9">
+        Solidification
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../multiphase/solidification/d2q9_solid/" title="D2q9 solid" class="md-nav__link">
+      D2q9 solid
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-9" type="checkbox" id="nav-8-9">
+    
+    <label class="md-nav__link" for="nav-8-9">
+      Nonnewtonian
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-9">
+        Nonnewtonian
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../nonnewtonian/d3q27_viscoplastic/" title="D3q27 viscoplastic" class="md-nav__link">
+      D3q27 viscoplastic
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10" type="checkbox" id="nav-8-10">
+    
+    <label class="md-nav__link" for="nav-8-10">
+      Optimization
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-10">
+        Optimization
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../optimization/d2q9_adj/" title="D2q9 adj" class="md-nav__link">
+      D2q9 adj
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../optimization/d2q9_optimalMixing/" title="d2q9 optimalMixing" class="md-nav__link">
+      d2q9 optimalMixing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../optimization/d3q19_heat_adj/" title="D3q19 heat adj" class="md-nav__link">
+      D3q19 heat adj
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-10-4" type="checkbox" id="nav-8-10-4">
+    
+    <label class="md-nav__link" for="nav-8-10-4">
+      Experimental
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-10-4">
+        Experimental
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../optimization/experimental/d2q9_heat_adj/" title="D2q9 heat adj" class="md-nav__link">
+      D2q9 heat adj
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8-11" type="checkbox" id="nav-8-11">
+    
+    <label class="md-nav__link" for="nav-8-11">
+      Shallowwater
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-11">
+        Shallowwater
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../shallowwater/sw/" title="Sw" class="md-nav__link">
+      Sw
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-1" type="checkbox" id="nav-9-1">
+    
+    <label class="md-nav__link" for="nav-9-1">
+      Model development
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-1">
+        Model development
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tutorials/model-development/1.-finite-difference-wave-equation/" title="1. finite difference wave equation" class="md-nav__link">
+      1. finite difference wave equation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tutorials/model-development/2.-D2Q9-Single-Relexation-Time/" title="2. D2Q9 Single Relexation Time" class="md-nav__link">
+      2. D2Q9 Single Relexation Time
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tutorials/model-development/3.-D2Q9-ShanChen-SRT/" title="3. D2Q9 ShanChen SRT" class="md-nav__link">
+      3. D2Q9 ShanChen SRT
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9-2" type="checkbox" id="nav-9-2">
+    
+    <label class="md-nav__link" for="nav-9-2">
+      Particles
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-9-2">
+        Particles
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../tutorials/particles/particles-in-pipe/" title="Particles in pipe" class="md-nav__link">
+      Particles in pipe
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#details" title="Details" class="md-nav__link">
+    Details
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zonal-settings" title="Zonal Settings" class="md-nav__link">
+    Zonal Settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-settings" title="Global Settings" class="md-nav__link">
+    Global Settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exported-quantities-vtk-etc" title="Exported Quantities (VTK, etc)" class="md-nav__link">
+    Exported Quantities (VTK, etc)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exported-global-integrals-csv-etc" title="Exported Global Integrals (CSV, etc)" class="md-nav__link">
+    Exported Global Integrals (CSV, etc)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node-types" title="Node Types" class="md-nav__link">
+    Node Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solved-fields" title="Solved fields" class="md-nav__link">
+    Solved fields
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#densities-default-accessors" title="Densities - default accessors" class="md-nav__link">
+    Densities - default accessors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#action-stages" title="Action stages" class="md-nav__link">
+    Action stages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actions" title="Actions" class="md-nav__link">
+    Actions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
               
+                
+                
+                  <h1>Wave2d</h1>
+                
                 <h2 id="description">Description</h2>
 <p>wave2d</p>
 <h2 id="details">Details</h2>
@@ -945,54 +2498,84 @@
 </tr>
 </tbody>
 </table>
+                
+                  
+                
               
-            </div>
+              
+                
+              
+            </article>
           </div>
-          <footer>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../../article/d3q19_heat_adj_art/" class="btn btn-neutral float-right" title="D3q19 heat adj art">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../wave/" class="btn btn-neutral" title="Wave"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../wave/" title="Wave" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Wave
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../article/d3q19_heat_adj_art/" title="D3q19 heat adj art" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                D3q19 heat adj art
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
     </div>
   
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-    
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="http://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
   </div>
-
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    </div>
+    
+      <script src="../../../assets/javascripts/application.8eb9be28.js"></script>
       
+      <script>app.initialize({version:"0.17.3",url:{base:"../../.."}})</script>
       
-        <span><a href="../wave/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
       
+    
+    
       
-        <span style="margin-left: 15px"><a href="../../article/d3q19_heat_adj_art/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
-</div>
-    <script>var base_url = '../../..';</script>
-    <script src="../../../js/theme.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-      <script src="../../../search/require.js"></script>
-      <script src="../../../search/search.js"></script>
-
-</body>
+    
+  </body>
 </html>

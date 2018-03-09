@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,13 +13,13 @@
         
     <url>
      <loc>/1.-Getting-started/installation/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/1.-Getting-started/running-simulation/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -29,19 +29,19 @@
         
     <url>
      <loc>/2.-Installation/ESYS-Particle/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/2.-Installation/configuration-options/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/2.-Installation/dependencies/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -51,25 +51,25 @@
         
     <url>
      <loc>/3.-Running-simulations/case-basics/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/3.-Running-simulations/examples/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/3.-Running-simulations/units/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/3.-Running-simulations/working-remotely/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -79,19 +79,19 @@
         
     <url>
      <loc>/4.-Post-processing/catalyst/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/4.-Post-processing/paraview/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/4.-Post-processing/particles/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -101,7 +101,13 @@
         
     <url>
      <loc>/5.-Model-development/basics/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/5.-Model-development/tips/</loc>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -111,61 +117,61 @@
         
     <url>
      <loc>/XML-Reference/Callbacks/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/XML-Reference/Container/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/XML-Reference/Executions/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/XML-Reference/Geometry-Boolean-Operation/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/XML-Reference/Geometry-Primitive/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/XML-Reference/Geometry/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/XML-Reference/Node-Type-Brush/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/XML-Reference/Optimization-and-Optimal-Control/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/XML-Reference/Params/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/XML-Reference/Setup-Elements/</loc>
-     <lastmod>2018-03-04</lastmod>
+     <lastmod>2018-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
